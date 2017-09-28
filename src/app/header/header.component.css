@@ -1,0 +1,18 @@
+h1 {
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0 auto;
+    width: 20%;
+}
+
+li {
+    display: inline-block;
+}
+form {
+    
+    width: 19%;
+    margin: 1% auto;
+}
