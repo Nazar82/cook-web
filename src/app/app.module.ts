@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { SectionComponent } from './section/section.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { MainSectionComponent } from './main-section/main-section.component';
 import { RecipesListComponent } from './recipes-list/recipes-list.component';
 import { AboutComponent } from './about/about.component';
 import { RegisterComponent } from './register/register.component';
@@ -26,7 +25,6 @@ const appRoutes: Routes = [
     SectionComponent,
     HeaderComponent,
     FooterComponent,
-    MainSectionComponent,
     RecipesListComponent,
     AboutComponent,
     RegisterComponent,
