@@ -10,15 +10,15 @@ import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
-  { path: 'recipes', component: RecipesListComponent},
+  { path: 'recipes', component: RecipesListComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'add', component: AddRecipeComponent},
+  { path: 'add', component: AddRecipeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent }
 ];
 
 @NgModule({
-    imports: [ RouterModule.forRoot(appRoutes) ],
-    exports: [ RouterModule ]
-  })
-  export class AppRoutingModule {};
+  imports: [RouterModule.forRoot(appRoutes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }

@@ -7,5 +7,4 @@ export class RecipeService {
     getRecipes(): Recipe[] {
         return RECIPES;
     }
-
-};
+}

@@ -1,5 +1,4 @@
 export class Recipe {
-    constructor( public title: string, public body: string ) {
-
+    constructor(public title: string, public body: string) {
     }
-};
+}
