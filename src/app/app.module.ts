@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { SectionComponent } from './section/section.component';
@@ -10,14 +11,12 @@ import { RecipesListComponent } from './recipes-list/recipes-list.component';
 import { AboutComponent } from './about/about.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { FullRecipeComponent } from './full-recipe/full-recipe.component';
+import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 
-const appRoutes: Routes = [
-  { path: '', redirectTo: '/recipes', pathMatch: 'full' },
-  { path: 'recipes', component: RecipesListComponent},
-  { path: 'about', component: AboutComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'login', component: LoginComponent }
-];
+import { AppRoutingModule } from './app.routing.module';
+import { RecipeService } from './recipe.service';
+
 
 @NgModule({
   declarations: [
@@ -28,15 +27,17 @@ const appRoutes: Routes = [
     RecipesListComponent,
     AboutComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    FullRecipeComponent,
+    AddRecipeComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(
-      appRoutes
-    )
+    FormsModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [RecipeService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

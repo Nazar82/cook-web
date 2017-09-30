@@ -1,5 +1,13 @@
-
+ 
  <app-header></app-header>
  <app-section></app-section>
  <router-outlet></router-outlet>
  <app-footer></app-footer>
+  
+ 
+ <ul>
+     <li *ngFor='let recipe of recipes'>
+         <h3>{{recipe.title}}</h3>
+         <p>{{recipe.body}}</p>
+     </li>
+ </ul>
