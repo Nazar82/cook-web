@@ -1,0 +1,54 @@
+<div>
+    <form class="form_recipe" name="form_recipe">
+        <h2>Add a recipe</h2>
+        <label for="title">Name of the dish:</label>
+        <br>
+        <input [(ngModel)]='title' type="text" name='title' placeholder="Name of the dish" id="title">
+        <br>
+        <label for="descript">Short description of the dish (from 90 to 110 characters):</label>
+        <br>
+        <textarea [(ngModel)]='body' rows="5" name="body" placeholder="Short description of the dish (from 90 to 110 characters)" id="descript"></textarea>
+        <br>
+        <label for="ingredients">Ingredients:</label>
+        <br>
+        <textarea rows="5" placeholder="Put each ingredient on its own line" id="ingredients"></textarea>
+        <br>
+        <label for="body">How to cook the dish:</label>
+        <br>
+        <textarea rows="10" placeholder="Put each step on its own line" id="body"></textarea>
+        <br>
+        <label for="main-ingred">Main ingredient</label><br>
+        <select id="main-ingred">
+          <option value="meat">Meat</option>
+          <option value="fish">Fish</option>
+          <option value="vegetables">Vegetables</option>
+          <option value="fruits">Fruits</option>
+          <option value="other">Other</option>
+      </select>
+        <br>
+        <br>
+        <label for="type">Dish type</label>
+        <br>
+        <select id="type">
+          <option value="salad">Salads</option>
+          <option value="soup">Soups</option>
+          <option value="cake">Dessert</option>
+          <option value="drink">Drinks</option>
+          <option value="other">Other</option>
+      </select>
+        <br>
+        <br>
+        <label for="cuisine">Cuisine</label>
+        <br>
+        <select id="cuisine">
+        <option value="ukrainian">Ukrainian</option>
+        <option value="italian">Italian</option>
+        <option value="french">French</option>
+        <option value="asian">Asian</option>
+        <option value="other">Other</option>
+    </select>
+        <br>
+        <br>
+        <input type="button" value="Add" class="btn btn-primary" (click)="addRecipe(); title =''; body =''" />
+    </form>
+</div>

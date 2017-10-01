@@ -1,7 +1,17 @@
-div {
-    border: 1px solid red;
-    float: left;
-    margin-left: 5%;
-    margin-top: 3%;
-    width: 35%;
+.recipe {
+     border: 1px solid red;
+     width: 30%;
+     margin: 2%;
 }
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border: 1px solid green;
+    margin-left: 15%;
+    margin-top: 3%;
+    width: 80%;
+}
+
+ 
