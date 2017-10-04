@@ -1,5 +1,5 @@
-import { Recipe } from './recipe';
-export const RECIPES: Recipe[] = [
+/*import { Recipe } from './recipe';
+ export const RECIPES: Recipe[] = [
   {
     title: 'First Recipe',
     body: 'First Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed ut labore et dolore magna aliqua.'
@@ -24,4 +24,4 @@ export const RECIPES: Recipe[] = [
     title: 'Sixth Recipe',
     body: 'Sixth Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed ut labore et dolore magna aliqua.'
   }
-];
+]; */
