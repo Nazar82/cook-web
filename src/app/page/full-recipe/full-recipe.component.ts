@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+
 import { RecipeService } from '../../services/recipe.service';
-import { DataService } from '../../services/data.service';
+import { PassingIdService } from '../../services/passing-id.service';
 import { Recipe } from '../../models/recipe';
 
 @Component({
@@ -23,18 +25,25 @@ export class FullRecipeComponent implements OnInit {
   };
 
   constructor(private recipeService: RecipeService,
-    private dataService: DataService) { }
+    private passingIdService: PassingIdService) { }
 
   getOneRecipe(id) {
     this.recipeService.getOneRecipe(id)
       .subscribe(
       recipe => {
         this.recipe = recipe;
+      },
+      (err: HttpErrorResponse) => {
+        if (err.error instanceof Error) {
+          console.log('An error occurred:', err.error.message);
+        } else {
+          console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
+        }
       }
       );
   }
 
   ngOnInit() {
-    this.getOneRecipe(this.dataService.storage);
+    this.getOneRecipe(this.passingIdService.getId());
   }
 }

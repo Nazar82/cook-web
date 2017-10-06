@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Response } from '@angular/http';
+import { HttpErrorResponse } from '@angular/common/http';
+
 import { Recipe } from '../../models/recipe';
 import { RecipeService } from '../../services/recipe.service';
-import { DataService } from '../../services/data.service';
+import { PassingIdService } from '../../services/passing-id.service';
 import { Router } from '@angular/router';
 
  @Component({
@@ -15,7 +17,7 @@ export class RecipesListComponent implements OnInit {
 
   constructor(private recipeService: RecipeService,
     private router: Router,
-    private dataService: DataService
+    private passingIdService: PassingIdService
   ) {}
 
     getRecipes() {
@@ -23,14 +25,19 @@ export class RecipesListComponent implements OnInit {
       .subscribe(
         recipes => {
           this.recipes = recipes;
+        },
+        (err: HttpErrorResponse) => {
+          if (err.error instanceof Error) {
+            console.log('An error occurred:', err.error.message);
+          } else {
+            console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
+          }
         }
-      );
+        );
     }
 
     redirect(id) {
-      this.dataService.storage = id;
-      console.log(id);
-      console.log(this.dataService.storage);
+      this.passingIdService.saveId(id);
       this.router.navigate(['./full-recipe']);
     }
 
