@@ -3,20 +3,23 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
-import { AppComponent } from './app.component';
-import { SectionComponent } from './section/section.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { RecipesListComponent } from './recipes-list/recipes-list.component';
-import { AboutComponent } from './about/about.component';
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
-import { FullRecipeComponent } from './full-recipe/full-recipe.component';
-import { AddRecipeComponent } from './add-recipe/add-recipe.component';
+// import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
-import { AppRoutingModule } from './app.routing.module';
-import { RecipeService } from './recipe.service';
+import { AppComponent } from './page/main/app.component';
+import { SectionComponent } from './page/section/section.component';
+import { HeaderComponent } from './page/header/header.component';
+import { FooterComponent } from './page/footer/footer.component';
+import { RecipesListComponent } from './page/recipes-list/recipes-list.component';
+import { AboutComponent } from './page/about/about.component';
+import { RegisterComponent } from './page/register/register.component';
+import { LoginComponent } from './page/login/login.component';
+import { FullRecipeComponent } from './page/full-recipe/full-recipe.component';
+import { AddRecipeComponent } from './page/add-recipe/add-recipe.component';
 
+import { AppRoutingModule } from './routing/app.routing.module';
+import { RecipeService } from './services/recipe.service';
+import { PassingIdService } from './services/passing-id.service';
 
 @NgModule({
   declarations: [
@@ -34,9 +37,10 @@ import { RecipeService } from './recipe.service';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     AppRoutingModule
   ],
-  providers: [RecipeService],
+  providers: [RecipeService, PassingIdService],
   bootstrap: [AppComponent]
 })
 
