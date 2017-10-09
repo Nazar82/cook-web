@@ -22,7 +22,7 @@ export class AddRecipeComponent implements OnInit {
   constructor(private recipeService: RecipeService) { }
 
   addRecipe() {
-    this.recipe = new Recipe(
+      this.recipe = new Recipe(
       this.title,
       this.descript,
       this.ingredients,
@@ -33,7 +33,6 @@ export class AddRecipeComponent implements OnInit {
       this.posted_by
     );
 
-    console.log(this.recipe);
     this.recipeService.addRecipe(this.recipe);
     this.title = '';
     this.descript = '';

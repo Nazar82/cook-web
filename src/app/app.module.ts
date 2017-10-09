@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
@@ -20,6 +21,7 @@ import { AddRecipeComponent } from './page/add-recipe/add-recipe.component';
 import { AppRoutingModule } from './routing/app.routing.module';
 import { RecipeService } from './services/recipe.service';
 import { PassingIdService } from './services/passing-id.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -37,10 +39,11 @@ import { PassingIdService } from './services/passing-id.service';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [RecipeService, PassingIdService],
+  providers: [RecipeService, PassingIdService, AuthService],
   bootstrap: [AppComponent]
 })
 

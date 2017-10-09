@@ -5,8 +5,6 @@ import { Observable } from 'rxjs/Observable';
 import { Recipe } from '../models/recipe';
 import 'rxjs/add/operator/map';
 
-
-
 @Injectable()
 export class RecipeService {
 
@@ -28,7 +26,7 @@ export class RecipeService {
     return this.http.post(this.recipesUrl, recipe)
       .subscribe(
       (response) => console.log(response),
-      (error) => console.log(error)
+      (error) => console.error(error)
       );
   }
 }

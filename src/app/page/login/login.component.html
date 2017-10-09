@@ -7,13 +7,13 @@
     <li><a href="#">Login with Twitter</a></li>
   </ul>
   <br>
-  <form class="form_auth" name="form_login">
-    <input type="text" placeholder="Username">
+  <form [formGroup]="form" class="form_auth" name="form_login" (submit)="onLogin()">
+    <input type="text" name="username" placeholder="Username" formControlName="username">
     <br>
     <br>
-    <input type="password" placeholder="Password">
+    <input type="password" name="password" placeholder="Password" formControlName="password">
     <br>
     <br>
-    <button type="submit">Login</button>
+    <input type="submit" value="Login">
   </form>
 </div>

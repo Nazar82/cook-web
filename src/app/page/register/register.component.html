@@ -1,15 +1,23 @@
 <div>
-  <form class="form_auth" name="form_auth">
+  <form [formGroup]="form" class="form_auth" name="form_auth" (submit)="onRegister()">
     <h2>Register</h2>
-    <input type="text" name="username" placeholder="Username">
+    <input type="text" name="username" formControlName= "username" placeholder="Username">
     <br>
     <br>
-    <input type="email" name="email" placeholder="Email">
+    <input type="email" name="email" formControlName= "email" placeholder="Email">
     <br>
     <br>
-    <input type="password" name="password" placeholder="Password">
+    <input type="password" name="password" formControlName= "password" placeholder="Password">
+    <br>
+    <br>
+    <input type="password" name="confirm" formControlName= "confirm" placeholder="Confirm password">
     <br>
     <br>
     <button type="submit">Register</button>
   </form>
+  <p>username: {{form.controls.password.value}}</p>
 </div>
+
+
+
+ 
