@@ -8,6 +8,5 @@ export class Recipe {
         public type: string,
         public cuisine: string,
         public posted_by: string
-
     ) { }
 }

@@ -3,12 +3,13 @@
   <ul>
     <li><a routerLink='/'>Home</a></li>
     <li><a routerLink='/about'>About</a></li>
-    <li><a routerLink='/add'>Add Recipe</a></li>
-    <li><a routerLink='/register'>Register</a></li>
-    <li><a routerLink='/login'>Login</a></li>
+    <li *ngIf='auth.loadToken()'><a routerLink='/add'>Add Recipe</a></li>
+    <li *ngIf='!auth.loadToken()'><a routerLink='/register'>Register</a></li>
+    <li *ngIf='!auth.loadToken()'><a routerLink='/login'>Login</a></li>
+    <li *ngIf='auth.loadToken()'><a (click)='onLogout()' routerLink='/'>Logout</a></li>
   </ul>
 </nav>
 <form>
-  <input type="text" name="search" placeholder="Search..">
-  <input type="button" value="Go">
+  <input type='text' name='search' placeholder='Search..'>
+  <input type='button' value='Go'>
 </form>

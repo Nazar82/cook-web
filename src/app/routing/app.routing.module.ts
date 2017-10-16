@@ -15,11 +15,13 @@ const appRoutes: Routes = [
   { path: 'add', component: AddRecipeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'full-recipe', component: FullRecipeComponent}
+  { path: 'logout', redirectTo: '/recipes' },
+  { path: 'full-recipe', component: FullRecipeComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }
