@@ -9,11 +9,13 @@
   <br>
   <form [formGroup]="form" class="form_auth" name="form_login" (submit)="onLogin()">
     <input type="text" name="username" placeholder="Username" formControlName="username">
-    <br>
-    <br>
+    <ul class="help-block">
+      <li *ngIf="form.controls.username.errors?.required && form.controls.username.dirty">This field is required.</li>
+    </ul>
     <input type="password" name="password" placeholder="Password" formControlName="password">
-    <br>
-    <br>
-    <input type="submit" value="Login">
+    <ul class="help-block">
+      <li *ngIf="form.controls.password.errors?.required && form.controls.password.dirty">This field is required.</li>
+    </ul>
+    <input [disabled]="!form.valid" type="submit" value="Login" />
   </form>
 </div>

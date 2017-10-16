@@ -27,7 +27,7 @@ export class FullRecipeComponent implements OnInit {
   constructor(private recipeService: RecipeService,
     private passingIdService: PassingIdService) { }
 
-  getOneRecipe(id) {
+  getOneRecipe(id): void {
     this.recipeService.getOneRecipe(id)
       .subscribe(
       recipe => {
@@ -43,7 +43,7 @@ export class FullRecipeComponent implements OnInit {
       );
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getOneRecipe(this.passingIdService.getId());
   }
 }

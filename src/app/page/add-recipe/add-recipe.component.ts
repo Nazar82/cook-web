@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../../models/recipe';
 import { RecipeService } from '../../services/recipe.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-add-recipe',
@@ -17,12 +18,14 @@ export class AddRecipeComponent implements OnInit {
   main: string;
   type: string;
   cuisine: string;
-  posted_by = 'Bot';
+  posted_by: string;
 
-  constructor(private recipeService: RecipeService) { }
+  constructor(private recipeService: RecipeService,
+    private authService: AuthService
+  ) { }
 
-  addRecipe() {
-      this.recipe = new Recipe(
+  addRecipe(): void {
+    this.recipe = new Recipe(
       this.title,
       this.descript,
       this.ingredients,

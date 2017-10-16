@@ -3,9 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-
-// import { HttpModule } from '@angular/http';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './page/main/app.component';
 import { SectionComponent } from './page/section/section.component';
@@ -22,6 +20,7 @@ import { AppRoutingModule } from './routing/app.routing.module';
 import { RecipeService } from './services/recipe.service';
 import { PassingIdService } from './services/passing-id.service';
 import { AuthService } from './services/auth.service';
+import { AuthInterceptor } from './services/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +42,12 @@ import { AuthService } from './services/auth.service';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [RecipeService, PassingIdService, AuthService],
+  providers: [RecipeService, PassingIdService, AuthService, HeaderComponent,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 

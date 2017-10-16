@@ -3,27 +3,30 @@ import { Headers, Response } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Recipe } from '../models/recipe';
+import { MAIN_URL } from '../urls/urls';
+import { AuthService } from '../services/auth.service';
+
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class RecipeService {
 
   private headers = new Headers({ 'Content-Type': 'application/json' });
-  private recipesUrl = 'http://localhost:8080/api/recipes';
-  private oneRecipeUrl = 'http://localhost:8080/api/recipe';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private authService: AuthService
+  ) { }
 
- getRecipes(): Observable<Recipe[]> {
-    return this.http.get<Recipe[]>(this.recipesUrl);
+  getRecipes(): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(`${MAIN_URL}/api/recipes`);
   }
 
   getOneRecipe(id: string): Observable<Recipe> {
-    return this.http.get<Recipe>(`${this.oneRecipeUrl}/${id}`);
+    return this.http.get<Recipe>(`${MAIN_URL}/api/recipe/${id}`);
   }
 
-  addRecipe(recipe) {
-    return this.http.post(this.recipesUrl, recipe)
+  addRecipe(recipe: Recipe) {
+    return this.http.post(`${MAIN_URL}/api/recipes`, recipe)
       .subscribe(
       (response) => console.log(response),
       (error) => console.error(error)
