@@ -19,6 +19,8 @@ import { AddRecipeComponent } from './page/add-recipe/add-recipe.component';
 import { AppRoutingModule } from './routing/app.routing.module';
 import { RecipeService } from './services/recipe.service';
 import { PassingIdService } from './services/passing-id.service';
+import { PassingTypeService } from './services/passing-type.service';
+
 import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './services/auth-interceptor.service';
 
@@ -43,6 +45,7 @@ import { AuthInterceptor } from './services/auth-interceptor.service';
     AppRoutingModule
   ],
   providers: [RecipeService, PassingIdService, AuthService, HeaderComponent,
+    RecipesListComponent, PassingTypeService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

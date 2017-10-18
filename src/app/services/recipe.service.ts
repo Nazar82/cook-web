@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Headers, Response } from '@angular/http';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Recipe } from '../models/recipe';
 import { API_URL } from '../urls/urls';
@@ -23,6 +23,13 @@ export class RecipeService {
 
   getOneRecipe(id: string): Observable<Recipe> {
     return this.http.get<Recipe>(`${API_URL}/api/recipe/${id}`);
+  }
+
+  getRecipesByType(type: string): Observable<Recipe[]> {
+    console.log(type);
+    return this.http.get<Recipe[]>(`${API_URL}/api/recipesbytype`, {
+      params: new HttpParams().set('type', type),
+    });
   }
 
   addRecipe(recipe: Recipe) {

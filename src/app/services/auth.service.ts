@@ -40,6 +40,10 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
+  isAuthorized(): string {
+    return localStorage.getItem('token');
+  }
+
   logOut(): void {
     this.authToken = null;
     this.user = null;

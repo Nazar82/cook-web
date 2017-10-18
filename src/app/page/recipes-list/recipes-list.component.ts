@@ -5,6 +5,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Recipe } from '../../models/recipe';
 import { RecipeService } from '../../services/recipe.service';
 import { PassingIdService } from '../../services/passing-id.service';
+import { PassingTypeService } from '../../services/passing-type.service';
 import { Router } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 
@@ -20,13 +21,15 @@ export class RecipesListComponent implements OnInit {
   constructor(private recipeService: RecipeService,
     private router: Router,
     private passingIdService: PassingIdService,
-    private headerComponent: HeaderComponent
+    private headerComponent: HeaderComponent,
+    private passingTypeSrvice: PassingTypeService
   ) { }
 
   getRecipes(): void {
     this.recipeService.getRecipes()
       .subscribe(
       recipes => {
+        console.log(recipes);
         this.recipes = recipes;
       },
       (err: HttpErrorResponse) => {
@@ -38,14 +41,24 @@ export class RecipesListComponent implements OnInit {
       });
   }
 
+getRecipesByType() {
+  this.recipeService.getRecipesByType(this.passingTypeSrvice.getType()).subscribe(
+    (recipes) => {
+    this.recipes = recipes;
+    console.log(this.recipes);
+    },
+    (error) => console.error(error)
+    );
+}
+
   redirect(id): void {
     this.passingIdService.saveId(id);
     this.router.navigate(['./full-recipe']);
   }
 
   ngOnInit(): void {
-    this.getRecipes();
+   this.getRecipes();
+    // this.getRecipesByType();
   }
-
 }
 
