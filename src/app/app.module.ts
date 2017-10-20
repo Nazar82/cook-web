@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ChangeDetectorRef } from '@angular/core';
 
 import { AppComponent } from './page/main/app.component';
 import { SectionComponent } from './page/section/section.component';
@@ -42,7 +43,7 @@ import { AuthInterceptor } from './services/auth-interceptor.service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [RecipeService, PassingIdService, AuthService, HeaderComponent,
     RecipesListComponent, PassingTypeService,

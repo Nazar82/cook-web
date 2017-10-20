@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Optional, NgZone, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { Response } from '@angular/http';
 import { HttpErrorResponse } from '@angular/common/http';
 
@@ -12,8 +12,8 @@ import { HeaderComponent } from '../header/header.component';
 @Component({
   selector: 'app-recipes-list',
   templateUrl: './recipes-list.component.html',
-  styleUrls: ['./recipes-list.component.css']
-})
+  styleUrls: ['./recipes-list.component.css'],
+ })
 
 export class RecipesListComponent implements OnInit {
   recipes: Recipe[] = [];
@@ -22,8 +22,9 @@ export class RecipesListComponent implements OnInit {
     private router: Router,
     private passingIdService: PassingIdService,
     private headerComponent: HeaderComponent,
-    private passingTypeSrvice: PassingTypeService
-  ) { }
+    private passingTypeSrvice: PassingTypeService,
+    private ngZone: NgZone,
+   ) { }
 
   getRecipes(): void {
     this.recipeService.getRecipes()
@@ -41,15 +42,15 @@ export class RecipesListComponent implements OnInit {
       });
   }
 
-getRecipesByType() {
-  this.recipeService.getRecipesByType(this.passingTypeSrvice.getType()).subscribe(
-    (recipes) => {
-    this.recipes = recipes;
-    console.log(this.recipes);
-    },
-    (error) => console.error(error)
+  getRecipesByType() {
+    this.recipeService.getRecipesByType(this.passingTypeSrvice.getType()).subscribe(
+      (recipes) => {
+        this.recipes = recipes;
+        console.log(this.recipes);
+      },
+      (error) => console.error(error)
     );
-}
+  }
 
   redirect(id): void {
     this.passingIdService.saveId(id);
@@ -57,8 +58,7 @@ getRecipesByType() {
   }
 
   ngOnInit(): void {
-   this.getRecipes();
-    // this.getRecipesByType();
+    this.getRecipes();
   }
 }
 
