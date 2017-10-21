@@ -9,10 +9,8 @@
     flex-wrap: wrap;
     justify-content: space-around;
     border: 1px solid green;
-    margin-left: 15%;
-    margin-top: 3%;
-    width: 80%;
-}
+     margin-top: 3%;
+ }
 
 a {
     text-decoration: none;

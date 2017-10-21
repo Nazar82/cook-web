@@ -2,26 +2,26 @@
   <h4><a href="#">My Recipes</a></h4>
   <h4>Main Ingredient</h4>
   <ul>
-    <li><a href="#">Meat</a></li>
-    <li><a href="#">Fish</a></li>
-    <li><a href="#">Vegetables</a></li>
-    <li><a href="#">Fruits</a></li>
-    <li><a href="#">Other</a></li>
+    <li><a routerLink='/recipes' (click)='filterByMain("meat")'>Meat</a></li>
+    <li><a routerLink='/recipes' (click)='filterByMain("fish")'>Fish</a></li>
+    <li><a routerLink='/recipes' (click)='filterByMain("vegetables")'>Vegetables</a></li>
+    <li><a routerLink='/recipes' (click)='filterByMain("fruits")'>Fruits</a></li>
+    <li><a routerLink='/recipes' (click)='filterByMain("other")'>Other</a></li>
   </ul>
   <h4>Dish Type</h4>
   <ul>
-    <li><a href="#">Salads</a></li>
-    <li><a href="#">Soups</a></li>
-    <li><a href="#">Dessert</a></li>
-    <li><a href="#">Drinks</a></li>
-    <li><a href="#">Other</a></li>
+    <li><a routerLink='/recipes' (click)='filterByType("salad")'>Salads</a></li>
+    <li><a routerLink='/recipes' (click)='filterByType("soup")'>Soups</a></li>
+    <li><a routerLink='/recipes' (click)='filterByType("dessert")'>Dessert</a></li>
+    <li><a routerLink='/recipes' (click)='filterByType("drink")'>Drinks</a></li>
+    <li><a routerLink='/recipes' (click)='filterByType("other")'>Other</a></li>
   </ul>
   <h4>Cuisine</h4>
   <ul>
-    <li><a href="#">Ukrainian</a></li>
-    <li><a href="#">Italian</a></li>
-    <li><a href="#">French</a></li>
-    <li><a href="#">Asian</a></li>
-    <li><a href="#">Other</a></li>
+    <li><a routerLink='/recipes' (click)='filterByCuisine("ukrainian")'>Ukrainian</a></li>
+    <li><a routerLink='/recipes' (click)='filterByCuisine("italian")'>Italian</a></li>
+    <li><a routerLink='/recipes' (click)='filterByCuisine("french")'>French</a></li>
+    <li><a routerLink='/recipes' (click)='filterByCuisine("asian")'>Asian</a></li>
+    <li><a routerLink='/recipes' (click)='filterByCuisine("other")'>Other</a></li>
   </ul>
 </div>

@@ -37,7 +37,11 @@ export class AuthService {
   }
 
   loadToken(): string {
-    return localStorage.getItem('token');
+    return localStorage.getItem('token') || '';
+  }
+
+  isAuthorized(): string {
+    return this.loadToken();
   }
 
   logOut(): void {

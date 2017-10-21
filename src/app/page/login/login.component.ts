@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(user).subscribe(
       (response) => {
+        console.log(response);
         if (response['success'] === true) {
           this.authService.storeUserData(response['token'], response['user']);
           this.router.navigate(['/recipes']);

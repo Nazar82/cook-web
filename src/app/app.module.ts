@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ChangeDetectorRef } from '@angular/core';
 
 import { AppComponent } from './page/main/app.component';
 import { SectionComponent } from './page/section/section.component';
@@ -19,6 +20,8 @@ import { AddRecipeComponent } from './page/add-recipe/add-recipe.component';
 import { AppRoutingModule } from './routing/app.routing.module';
 import { RecipeService } from './services/recipe.service';
 import { PassingIdService } from './services/passing-id.service';
+import { PassingFilterService } from './services/passing-filter.service';
+
 import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './services/auth-interceptor.service';
 
@@ -40,9 +43,10 @@ import { AuthInterceptor } from './services/auth-interceptor.service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [RecipeService, PassingIdService, AuthService, HeaderComponent,
+    RecipesListComponent, PassingFilterService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
