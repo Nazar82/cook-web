@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipesListComponent } from '../recipes-list/recipes-list.component';
-import { PassingTypeService } from '../../services/passing-type.service';
+import { PassingFilterService } from '../../services/passing-filter.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,14 +11,25 @@ import { Router } from '@angular/router';
 export class SectionComponent implements OnInit {
 
   constructor(private recipesList: RecipesListComponent,
-    private passingTypeSrvice: PassingTypeService,
+    private passingFilterSrvice: PassingFilterService,
     private router: Router
   ) { }
 
-  filterByType(type) {
-    this.passingTypeSrvice.saveType(type);
-    this.recipesList.getRecipesByType();
-   }
+  filterByMain(filter) {
+    this.passingFilterSrvice.saveFilter(filter);
+    this.router.navigate(['/recipes'], { queryParams: { main: filter } });
+  }
+
+  filterByType(filter) {
+    this.passingFilterSrvice.saveFilter(filter);
+    this.router.navigate(['/recipes'], { queryParams: { type: filter } });
+  }
+
+  filterByCuisine(filter) {
+    this.passingFilterSrvice.saveFilter(filter);
+    this.router.navigate(['/recipes'], { queryParams: { cuisine: filter } });
+  }
+
   ngOnInit() {
   }
 

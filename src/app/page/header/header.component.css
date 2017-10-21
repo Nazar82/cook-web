@@ -2,15 +2,16 @@ h1 {
     text-align: center;
 }
 
-ul {
+nav ul {
+    display: flex;
     list-style-type: none;
-    margin: 0 auto;
-    width: 20%;
+    justify-content: center;  
 }
 
-li {
-    display: inline-block;
+nav a {
+padding: 10px;
 }
+ 
 form {
     
     width: 19%;

@@ -25,10 +25,22 @@ export class RecipeService {
     return this.http.get<Recipe>(`${API_URL}/api/recipe/${id}`);
   }
 
+  getRecipesByMain(main: string): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(`${API_URL}/api/recipesbymain`, {
+      params: new HttpParams().set('main', main),
+    });
+  }
+
   getRecipesByType(type: string): Observable<Recipe[]> {
     console.log(type);
     return this.http.get<Recipe[]>(`${API_URL}/api/recipesbytype`, {
       params: new HttpParams().set('type', type),
+    });
+  }
+
+  getRecipesByCuisine(cuisine: string): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(`${API_URL}/api/recipesbycuisine`, {
+      params: new HttpParams().set('cuisine', cuisine),
     });
   }
 

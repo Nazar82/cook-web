@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class PassingTypeService {
+export class PassingFilterService {
 
     type: string;
 
     constructor() { }
 
-    saveType(type): void {
+    saveFilter(type): void {
         this.type = type;
     }
 
-    getType(): string {
+    getFilter(): string {
         return this.type;
     }
 }
