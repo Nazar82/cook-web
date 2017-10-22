@@ -22,7 +22,10 @@ export class RecipeService {
   }
 
   getOneRecipe(id: string): Observable<Recipe> {
-    return this.http.get<Recipe>(`${API_URL}/api/recipe/${id}`);
+    return this.http.get<Recipe>(`${API_URL}/api/onerecipe`,
+    {
+      params: new HttpParams().set('id', id),
+    });
   }
 
   getRecipesByMain(main: string): Observable<Recipe[]> {
