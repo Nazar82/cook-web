@@ -33,6 +33,7 @@ export class FullRecipeComponent implements OnInit {
         .subscribe(
         recipe => {
           this.recipe = recipe;
+          console.log(recipe);
         },
         (err: HttpErrorResponse) => {
           if (err.error instanceof Error) {

@@ -1,27 +1,28 @@
+ 
 <div>
   <form [formGroup]="form" class="form_auth" name="form_auth" (submit)="onRegister()">
     <h2>Register</h2>
-    <input type="text" name="username" formControlName="username" placeholder="Username">
+    <input type="text" name="username" formControlName="username" placeholder="Username" class="form-control">
     <ul class="help-clock">
       <li *ngIf="form.controls.username.errors?.required && form.controls.username.dirty">This field is required</li>
       <li *ngIf="form.controls.username.errors?.minlength && form.controls.username.dirty || form.controls.username.errors?.maxlength && form.controls.username.dirty ">Minimum characters: 3, Maximum characters: 15</li>
     </ul>
-    <input type="email" name="email" formControlName="email" placeholder="Email">
+    <input type="email" name="email" formControlName="email" placeholder="Email" class="form-control">
     <ul class="help-clock">
       <li *ngIf="form.controls.email.errors?.required && form.controls.email.dirty">This field is required</li>
       <li *ngIf="(form.controls.email.errors?.minlength && form.controls.email.dirty || form.controls.email.errors?.maxlength && form.controls.email.dirty ) && form.controls.email.dirty">Minimum characters: 5, Maximum characters: 30</li>
       <li *ngIf="form.controls.email.errors?.validateEmail && form.controls.email.dirty">This must be a valid e-mail</li>
     </ul>
-    <input type="password" name="password" formControlName="password" placeholder="Password">
+    <input type="password" name="password" formControlName="password" placeholder="Password" class="form-control">
     <ul class="help-clock">
       <li *ngIf="form.controls.password.errors?.required && form.controls.password.dirty">This field is required</li>
       <li *ngIf="form.controls.password.errors?.minlength && form.controls.password.dirty || form.controls.password.errors?.maxlength && form.controls.password.dirty ">Minimum characters: 6, Maximum characters: 35</li>
     </ul>
-    <input type="password" name="confirm" formControlName="confirm" placeholder="Confirm password">
+    <input type="password" name="confirm" formControlName="confirm" placeholder="Confirm password" class="form-control">
     <ul class="help-clock">
       <li *ngIf="form.controls.confirm.errors?.required && form.controls.confirm.dirty">This field is required</li>
       <li *ngIf="form.errors?.matchingPasswords && form.controls.confirm.dirty">Password do not match</li> 
     </ul>
-    <input [disabled]="!form.valid" type="submit" value="Register">
+    <input [disabled]="!form.valid" type="submit" value="Register" class="btn btn-primary">
   </form>
 </div>

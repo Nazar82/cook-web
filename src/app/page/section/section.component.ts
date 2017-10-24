@@ -3,6 +3,9 @@ import { RecipesListComponent } from '../recipes-list/recipes-list.component';
 import { PassingFilterService } from '../../services/passing-filter.service';
 import { Router } from '@angular/router';
 
+import {MatButtonModule} from '@angular/material';
+
+
 @Component({
   selector: 'app-section',
   templateUrl: './section.component.html',
