@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, ParamMap } from '@angular/router';
 
 import { RecipeService } from '../../services/recipe.service';
 import { Recipe } from '../../models/recipe';
+
+
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'app-full-recipe',
@@ -28,21 +32,19 @@ export class FullRecipeComponent implements OnInit {
   ) { }
 
   getOneRecipe(): void {
-    this.activatedRoute.queryParams.subscribe((params: Params) => {
-      this.recipeService.getOneRecipe(params['id'])
-        .subscribe(
-        recipe => {
-          this.recipe = recipe;
-          console.log(recipe);
-        },
-        (err: HttpErrorResponse) => {
-          if (err.error instanceof Error) {
-            console.error('An error occurred:', err.error.message);
-          } else {
-            console.error(`Backend returned code ${err.status}, body was: ${err.error}`);
-          }
-        });
-    });
+    this.activatedRoute.paramMap
+      .switchMap((params: ParamMap) => this.recipeService.getOneRecipe(params.get('id')))
+      .subscribe(
+      recipe => {
+        this.recipe = recipe;
+      },
+      (err: HttpErrorResponse) => {
+        if (err.error instanceof Error) {
+          console.error('An error occurred:', err.error.message);
+        } else {
+          console.error(`Backend returned code ${err.status}, body was: ${err.error}`);
+        }
+      });
   }
 
   ngOnInit(): void {

@@ -16,7 +16,7 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'logout', redirectTo: '/recipes' },
-  { path: 'full-recipe', component: FullRecipeComponent }
+  { path: 'recipes/:id', component: FullRecipeComponent }
 ];
 
 @NgModule({

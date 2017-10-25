@@ -20,12 +20,12 @@ export class SectionComponent implements OnInit {
 
   filterByMain(filter) {
     this.passingFilterSrvice.saveFilter(filter);
-    this.router.navigate(['/recipes'], { queryParams: { main: filter } });
+    this.router.navigate(['/recipes'], { queryParams: { main_ingredient: filter } });
   }
 
   filterByType(filter) {
     this.passingFilterSrvice.saveFilter(filter);
-    this.router.navigate(['/recipes'], { queryParams: { type: filter } });
+    this.router.navigate(['/recipes'], { queryParams: { dish_type: filter } });
   }
 
   filterByCuisine(filter) {

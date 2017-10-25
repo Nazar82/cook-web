@@ -86,10 +86,10 @@ export class RecipesListComponent implements OnInit {
 
   getRecipes(): void {
     this.activatedRoute.queryParams.subscribe((params: Params) => {
-      if (params['main']) {
-        this.getRecipesByMain(params['main']);
-      } else if (params['type']) {
-        this.getRecipesByType(params['type']);
+      if (params['main_ingredient']) {
+        this.getRecipesByMain(params['main_ingredient']);
+      } else if (params['dish_type']) {
+        this.getRecipesByType(params['dish_type']);
       } else if (params['cuisine']) {
         this.getRecipesByCuisine(params['cuisine']);
       } else {
@@ -99,7 +99,7 @@ export class RecipesListComponent implements OnInit {
   }
 
   redirect(id): void {
-    this.router.navigate(['./full-recipe'], { queryParams: { id: id } });
+    this.router.navigate(['./recipes', id]);
   }
 
   ngOnInit() {

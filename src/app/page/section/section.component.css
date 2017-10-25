@@ -1,11 +1,47 @@
- ul {
-     list-style-type: none;
-     color: white;
+  .nav-container {
+    margin-top: 20%;
  }
+  
+  ul {
+     list-style-type: none;
+     margin-left: 1rem;
+  }
 
  a {
     color: white;
-    
  }
+
+ .dropdown-main, .dropdown-type, .dropdown-cuisine, .filter {
+     display: table;
+ }
+
+ .dropdown-main-content {
+    display: none;
+    }
+
+
+.dropdown-main:hover .dropdown-main-content {
+    display: block;
+}
+
+.dropdown-type-content {
+    display: none;
+    }
+
+.dropdown-type:hover .dropdown-type-content {
+    display: block;
+}
+
+.dropdown-cuisine-content {
+    display: none;
+    }
+
+.dropdown-cuisine:hover .dropdown-cuisine-content {
+    display: block;
+}
+ 
+ 
+ 
+
 
  

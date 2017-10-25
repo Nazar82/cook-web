@@ -1,29 +1,41 @@
-<div>
-  <h4><a href="#">My Recipes</a></h4>
-  <h4>Sort Recipes by:</h4>
-
-  <h4>Main Ingredient</h4>
-  <ul>
-    <li><a routerLink='/recipes' (click)='filterByMain("meat")'>Meat</a></li>
-    <li><a routerLink='/recipes' (click)='filterByMain("fish")'>Fish</a></li>
-    <li><a routerLink='/recipes' (click)='filterByMain("vegetables")'>Vegetables</a></li>
-    <li><a routerLink='/recipes' (click)='filterByMain("fruits")'>Fruits</a></li>
-    <li><a routerLink='/recipes' (click)='filterByMain("other")'>Other</a></li>
-  </ul>
-  <h4>Dish Type</h4>
-  <ul>
-    <li><a routerLink='/recipes' (click)='filterByType("salad")'>Salads</a></li>
-    <li><a routerLink='/recipes' (click)='filterByType("soup")'>Soups</a></li>
-    <li><a routerLink='/recipes' (click)='filterByType("dessert")'>Dessert</a></li>
-    <li><a routerLink='/recipes' (click)='filterByType("drink")'>Drinks</a></li>
-    <li><a routerLink='/recipes' (click)='filterByType("other")'>Other</a></li>
-  </ul>
-  <h4>Cuisine</h4>
-  <ul>
-    <li><a routerLink='/recipes' (click)='filterByCuisine("ukrainian")'>Ukrainian</a></li>
-    <li><a routerLink='/recipes' (click)='filterByCuisine("italian")'>Italian</a></li>
-    <li><a routerLink='/recipes' (click)='filterByCuisine("french")'>French</a></li>
-    <li><a routerLink='/recipes' (click)='filterByCuisine("asian")'>Asian</a></li>
-    <li><a routerLink='/recipes' (click)='filterByCuisine("other")'>Other</a></li>
-  </ul>
+<div class="nav-container">
+  <h5><a href="#">All Recipes</a></h5>
+  <h5><a href="#">My Recipes</a></h5>
+  <h5>Sort Recipes by:</h5>
+  <div class="dropdown-main">
+    <h5 class="filter">Main Ingredient</h5>
+    <div class="dropdown-main-content">
+      <ul>
+        <li><a routerLink='/recipes' (click)='filterByMain("meat")'>Meat</a></li>
+        <li><a routerLink='/recipes' (click)='filterByMain("fish")'>Fish</a></li>
+        <li><a routerLink='/recipes' (click)='filterByMain("vegetables")'>Vegetables</a></li>
+        <li><a routerLink='/recipes' (click)='filterByMain("fruits")'>Fruits</a></li>
+        <li><a routerLink='/recipes' (click)='filterByMain("other")'>Other</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="dropdown-type">
+    <h5 class="filter">Dish Type</h5>
+    <div class="dropdown-type-content">
+      <ul>
+        <li><a routerLink='/recipes' (click)='filterByType("salad")'>Salads</a></li>
+        <li><a routerLink='/recipes' (click)='filterByType("soup")'>Soups</a></li>
+        <li><a routerLink='/recipes' (click)='filterByType("dessert")'>Dessert</a></li>
+        <li><a routerLink='/recipes' (click)='filterByType("drink")'>Drinks</a></li>
+        <li><a routerLink='/recipes' (click)='filterByType("other")'>Other</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="dropdown-cuisine">
+    <h5 class="filter">Cuisine</h5>
+    <div class="dropdown-cuisine-content">
+      <ul>
+        <li><a routerLink='/recipes' (click)='filterByCuisine("ukrainian")'>Ukrainian</a></li>
+        <li><a routerLink='/recipes' (click)='filterByCuisine("italian")'>Italian</a></li>
+        <li><a routerLink='/recipes' (click)='filterByCuisine("french")'>French</a></li>
+        <li><a routerLink='/recipes' (click)='filterByCuisine("asian")'>Asian</a></li>
+        <li><a routerLink='/recipes' (click)='filterByCuisine("other")'>Other</a></li>
+      </ul>
+    </div>
+  </div>
 </div>
