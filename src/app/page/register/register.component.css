@@ -1,26 +1,41 @@
-div {
-    
-    float: left;
-    margin-left: 5%;
-    margin-top: 3%;
-    width: 80%;
+.container {
+    margin-top: 2em;
 }
 
-form {
-    width: 30%;
+h4 {
+    text-align: center;
+}
+
+.form-control {
+    width: 25em;
+    margin: 1em auto;
+}
+
+.btn {
+    display: block;
+    width: 6em;
     margin: 0 auto;
+    background-color: #7096E2 !important;
+    border: transparent !important;
+    opacity: 1 !important;
 }
 
-ul {
-    list-style-type: none;
+.btn:hover {
+    background-color: #A8BEEB !important;
 }
 
-.example-container {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .example-container > * {
-    width: 100%;
-  }
-  
+@media only screen and (max-width: 780px) {
+    .container {
+        margin-top: 0;
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 580px) {
+    .container {
+        width: 90%;
+    }
+    .form-control {
+        width: 18em;
+    }
+}

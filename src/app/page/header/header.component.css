@@ -1,20 +1,63 @@
-h1 {
+h3 {
     margin-top: 5%;
     text-align: center;
 }
 
-nav ul {
-    display: flex;
-    list-style-type: none;
-    justify-content: center;  
+h6 {
+    text-align: center;
 }
 
-nav a {
-padding: 10px;
+ul {
+    display: flex;
+    list-style-type: none;
+    justify-content: center;
 }
- 
-form {
-    
-    width: 19%;
-    margin: 1% auto;
+
+a {
+    color: #7096E2;
+    font-size: 1em;
+    padding: 1em;
+}
+
+a:hover {
+    color: #A8BEEB;
+    text-decoration: underline;
+}
+
+.input-group {
+    width: 20em;
+    margin: 0 auto;
+}
+
+.menu_icon svg {
+    fill: #7096E2;
+}
+
+.menu_icon {
+    display: none;
+}
+
+@media only screen and (max-width: 780px) {
+    .menu_icon {
+        display: block;
+        width: 7%;
+        margin: auto;
+    }
+}
+
+@media only screen and (max-width: 580px) {
+    h3 {
+        width: 70%;
+        margin: 1em auto;
+    }
+    h6 {
+        width: 80%;
+        margin: 0 auto;
+    }
+    nav a {
+        padding: 0.3em;
+    }
+    .input-group {
+        width: 15em;
+    }
 }

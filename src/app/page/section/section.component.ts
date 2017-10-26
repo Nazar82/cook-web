@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipesListComponent } from '../recipes-list/recipes-list.component';
+import { AppComponent } from '../main/app.component';
 import { PassingFilterService } from '../../services/passing-filter.service';
 import { Router } from '@angular/router';
 
-import {MatButtonModule} from '@angular/material';
+import { MatButtonModule } from '@angular/material';
 
 
 @Component({
@@ -15,7 +16,8 @@ export class SectionComponent implements OnInit {
 
   constructor(private recipesList: RecipesListComponent,
     private passingFilterSrvice: PassingFilterService,
-    private router: Router
+    private router: Router,
+    private appComponent: AppComponent
   ) { }
 
   filterByMain(filter) {
@@ -31,6 +33,10 @@ export class SectionComponent implements OnInit {
   filterByCuisine(filter) {
     this.passingFilterSrvice.saveFilter(filter);
     this.router.navigate(['/recipes'], { queryParams: { cuisine: filter } });
+  }
+
+  hideMenu() {
+    this.appComponent.block = undefined;
   }
 
   ngOnInit() {

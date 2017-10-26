@@ -1,4 +1,48 @@
- form {
-    width: 50%;
+.container {
+    margin-top: 2em;
+}
+
+h4 {
+    text-align: center;
+}
+
+.form-control {
+    width: 25em;
+    margin: 1em auto;
+}
+
+.btn {
+    display: block;
+    width: 4em;
     margin: 0 auto;
+    background-color: #7096E2 !important;
+    border: transparent !important;
+    opacity: 1 !important;
+}
+
+.btn:hover {
+    background-color: #A8BEEB !important;
+}
+
+label {
+    display: block;
+    width: 70%;
+    margin: 0 auto !important;
+    text-align: center;
+}
+
+@media only screen and (max-width: 780px) {
+    .container {
+        margin-top: 0;
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 580px) {
+    .container {
+        width: 90%;
+    }
+    .form-control {
+        width: 18em;
+    }
 }

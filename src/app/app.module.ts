@@ -52,7 +52,7 @@ import { AuthInterceptor } from './services/auth-interceptor.service';
     MatFormFieldModule
   ],
   providers: [RecipeService, PassingIdService, AuthService, HeaderComponent,
-    RecipesListComponent, PassingFilterService,
+    RecipesListComponent, PassingFilterService, HeaderComponent, AppComponent,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
