@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ActivatedRoute, Params, ParamMap } from '@angular/router';
 
 import { RecipeService } from '../../services/recipe.service';
-import { PassingIdService } from '../../services/passing-id.service';
 import { Recipe } from '../../models/recipe';
+
+
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'app-full-recipe',
@@ -12,7 +16,6 @@ import { Recipe } from '../../models/recipe';
 })
 
 export class FullRecipeComponent implements OnInit {
-
   recipe: Recipe = {
     title: '',
     descript: '',
@@ -25,10 +28,12 @@ export class FullRecipeComponent implements OnInit {
   };
 
   constructor(private recipeService: RecipeService,
-    private passingIdService: PassingIdService) { }
+    private activatedRoute: ActivatedRoute
+  ) { }
 
-  getOneRecipe(id): void {
-    this.recipeService.getOneRecipe(id)
+  getOneRecipe(): void {
+    this.activatedRoute.paramMap
+      .switchMap((params: ParamMap) => this.recipeService.getOneRecipe(params.get('id')))
       .subscribe(
       recipe => {
         this.recipe = recipe;
@@ -39,11 +44,10 @@ export class FullRecipeComponent implements OnInit {
         } else {
           console.error(`Backend returned code ${err.status}, body was: ${err.error}`);
         }
-      }
-      );
+      });
   }
 
   ngOnInit(): void {
-    this.getOneRecipe(this.passingIdService.getId());
+    this.getOneRecipe();
   }
 }

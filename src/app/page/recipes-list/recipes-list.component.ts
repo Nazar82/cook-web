@@ -4,8 +4,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 import { Recipe } from '../../models/recipe';
 import { RecipeService } from '../../services/recipe.service';
-import { PassingIdService } from '../../services/passing-id.service';
-import { PassingFilterService } from '../../services/passing-filter.service';
 import { Router, Event, NavigationEnd, ActivatedRoute, Params } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 
@@ -20,9 +18,7 @@ export class RecipesListComponent implements OnInit {
 
   constructor(private recipeService: RecipeService,
     private router: Router,
-    private passingIdService: PassingIdService,
     private headerComponent: HeaderComponent,
-    private passingFilterSrvice: PassingFilterService,
     private ngZone: NgZone,
     private activatedRoute: ActivatedRoute
   ) { }
@@ -43,8 +39,8 @@ export class RecipesListComponent implements OnInit {
       });
   }
 
-  getRecipesByMain(): void {
-    this.recipeService.getRecipesByMain(this.passingFilterSrvice.getFilter()).subscribe(
+  getRecipesByMain(main): void {
+    this.recipeService.getRecipesByMain(main).subscribe(
       (recipes) => {
         this.recipes = recipes;
         console.log(this.recipes);
@@ -58,8 +54,8 @@ export class RecipesListComponent implements OnInit {
       });
   }
 
-  getRecipesByType(): void {
-    this.recipeService.getRecipesByType(this.passingFilterSrvice.getFilter()).subscribe(
+  getRecipesByType(type): void {
+    this.recipeService.getRecipesByType(type).subscribe(
       (recipes) => {
         this.recipes = recipes;
         console.log(this.recipes);
@@ -73,8 +69,8 @@ export class RecipesListComponent implements OnInit {
       });
   }
 
-  getRecipesByCuisine(): void {
-    this.recipeService.getRecipesByCuisine(this.passingFilterSrvice.getFilter()).subscribe(
+  getRecipesByCuisine(cuisine): void {
+    this.recipeService.getRecipesByCuisine(cuisine).subscribe(
       (recipes) => {
         this.recipes = recipes;
         console.log(this.recipes);
@@ -87,14 +83,15 @@ export class RecipesListComponent implements OnInit {
         }
       });
   }
+
   getRecipes(): void {
     this.activatedRoute.queryParams.subscribe((params: Params) => {
-      if (params['main']) {
-        this.getRecipesByMain();
-      } else if (params['type']) {
-        this.getRecipesByType();
+      if (params['main_ingredient']) {
+        this.getRecipesByMain(params['main_ingredient']);
+      } else if (params['dish_type']) {
+        this.getRecipesByType(params['dish_type']);
       } else if (params['cuisine']) {
-        this.getRecipesByCuisine();
+        this.getRecipesByCuisine(params['cuisine']);
       } else {
         this.getAllRecipes();
       }
@@ -102,8 +99,7 @@ export class RecipesListComponent implements OnInit {
   }
 
   redirect(id): void {
-    this.passingIdService.saveId(id);
-    this.router.navigate(['./full-recipe']);
+    this.router.navigate(['./recipes', id]);
   }
 
   ngOnInit() {

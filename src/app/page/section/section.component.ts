@@ -3,6 +3,9 @@ import { RecipesListComponent } from '../recipes-list/recipes-list.component';
 import { PassingFilterService } from '../../services/passing-filter.service';
 import { Router } from '@angular/router';
 
+import {MatButtonModule} from '@angular/material';
+
+
 @Component({
   selector: 'app-section',
   templateUrl: './section.component.html',
@@ -17,12 +20,12 @@ export class SectionComponent implements OnInit {
 
   filterByMain(filter) {
     this.passingFilterSrvice.saveFilter(filter);
-    this.router.navigate(['/recipes'], { queryParams: { main: filter } });
+    this.router.navigate(['/recipes'], { queryParams: { main_ingredient: filter } });
   }
 
   filterByType(filter) {
     this.passingFilterSrvice.saveFilter(filter);
-    this.router.navigate(['/recipes'], { queryParams: { type: filter } });
+    this.router.navigate(['/recipes'], { queryParams: { dish_type: filter } });
   }
 
   filterByCuisine(filter) {
