@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +7,19 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
+  constructor() { }
+  block: string;
   title = 'Cookbook App';
+
+  windowWidth: number = window.innerWidth;
+  AppComponentngAfterViewInit() {
+    this.windowWidth = window.innerWidth;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  resize(event) {
+    this.windowWidth = window.innerWidth;
+    this.block = undefined;
+  }
+
 }

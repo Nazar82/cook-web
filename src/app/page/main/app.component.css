@@ -1,6 +1,13 @@
   .grid {
-      display: grid;
-      grid-template-columns: 1fr 2fr 10fr 1fr;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
   }
-
- 
+  
+  @media only screen and (max-width: 780px) {
+    .grid {
+      display: block;
+    }
+    app-section {
+      display: none;
+    }
+  }

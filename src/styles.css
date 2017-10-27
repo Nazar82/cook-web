@@ -13,11 +13,8 @@ body {
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
-    color: white;
+    color: rgba(248, 249, 255, 0.83);
     font-family: 'Merienda', cursive;
  }
 
- a:link {
-     color: white;
-    text-decoration: none !important;
-}
+ 

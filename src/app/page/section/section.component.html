@@ -1,9 +1,9 @@
-<div class="nav-container">
-  <h5><a href="#">All Recipes</a></h5>
-  <h5><a href="#">My Recipes</a></h5>
-  <h5>Sort Recipes by:</h5>
+<div (click)="hideMenu()" class="container">
+  <h6><a href="#">All Recipes</a></h6>
+  <h6><a href="#">My Recipes</a></h6>
+  <h6>Sort by:</h6>
   <div class="dropdown-main">
-    <h5 class="filter">Main Ingredient</h5>
+    <h6 class="filter">Ingredient</h6>
     <div class="dropdown-main-content">
       <ul>
         <li><a routerLink='/recipes' (click)='filterByMain("meat")'>Meat</a></li>
@@ -15,7 +15,7 @@
     </div>
   </div>
   <div class="dropdown-type">
-    <h5 class="filter">Dish Type</h5>
+    <h6 class="filter">Dish Type</h6>
     <div class="dropdown-type-content">
       <ul>
         <li><a routerLink='/recipes' (click)='filterByType("salad")'>Salads</a></li>
@@ -27,7 +27,7 @@
     </div>
   </div>
   <div class="dropdown-cuisine">
-    <h5 class="filter">Cuisine</h5>
+    <h6 class="filter">Cuisine</h6>
     <div class="dropdown-cuisine-content">
       <ul>
         <li><a routerLink='/recipes' (click)='filterByCuisine("ukrainian")'>Ukrainian</a></li>

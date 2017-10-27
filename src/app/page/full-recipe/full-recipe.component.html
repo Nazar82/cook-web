@@ -1,16 +1,11 @@
-<div>
-  <h2>{{recipe.title}}</h2>
+<div class="container">
+  <h4>{{recipe.title}}</h4>
   <p>{{recipe.descript}}</p>
-  <h3>Ingredients</h3>
-
+  <h4>Ingredients</h4>
   <p>{{recipe.ingredients}}</p>
-
-  <h3>Directions</h3>
-
+  <h4>Directions</h4>
   <p>{{recipe.directions}}</p>
-
-  <br>
   <small>Posted by {{recipe.posted_by}}</small>
-  <a href="#"><input type="button" value="Edit"/></a>
-  <input type="button" value="Delete" />
+  <button type="button" class="btn btn-primary btn-sm">Edit</button>
+  <button type="button" class="btn btn-primary btn-sm">Delete</button>
 </div>

@@ -1,47 +1,56 @@
-  .nav-container {
-    margin-top: 20%;
- }
+  .container {
+      margin-top: 3em;
+      color: #7096E2;
+      margin-left: 4em;
+  }
+  
+  a {
+      color: #7096E2;
+  }
+  
+  a:hover {
+      color: #A8BEEB;
+  }
+  
+  .filter:hover {
+      color: #A8BEEB;
+  }
   
   ul {
-     list-style-type: none;
-     margin-left: 1rem;
+      list-style-type: none;
+      margin-left: 1em;
   }
-
- a {
-    color: white;
- }
-
- .dropdown-main, .dropdown-type, .dropdown-cuisine, .filter {
-     display: table;
- }
-
- .dropdown-main-content {
-    display: none;
-    }
-
-
-.dropdown-main:hover .dropdown-main-content {
-    display: block;
-}
-
-.dropdown-type-content {
-    display: none;
-    }
-
-.dropdown-type:hover .dropdown-type-content {
-    display: block;
-}
-
-.dropdown-cuisine-content {
-    display: none;
-    }
-
-.dropdown-cuisine:hover .dropdown-cuisine-content {
-    display: block;
-}
- 
- 
- 
-
-
- 
+  
+  @media only screen and (max-width: 780px) {
+      .nav-container {
+          margin-top: 1em;
+      }
+  }
+  
+  .dropdown-main, .dropdown-type, .dropdown-cuisine, .filter {
+      display: table;
+  }
+  
+  .dropdown-main-content {
+      display: none;
+  }
+  
+  .dropdown-main:hover .dropdown-main-content {
+      display: block;
+  }
+  
+  .dropdown-type-content {
+      display: none;
+  }
+  
+  .dropdown-type:hover .dropdown-type-content {
+      display: block;
+  }
+  
+  .dropdown-cuisine-content {
+      display: none;
+  }
+  
+  .dropdown-cuisine:hover .dropdown-cuisine-content {
+      display: block;
+  }
