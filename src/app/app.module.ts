@@ -5,8 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ChangeDetectorRef } from '@angular/core';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatMenuModule, MatFormFieldModule } from '@angular/material';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './page/main/app.component';
 import { SectionComponent } from './page/section/section.component';
@@ -49,7 +50,8 @@ import { AuthInterceptor } from './services/auth-interceptor.service';
     BrowserAnimationsModule,
     MatButtonModule,
     MatMenuModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    NgbModule.forRoot()
   ],
   providers: [RecipeService, PassingIdService, AuthService, HeaderComponent,
     RecipesListComponent, PassingFilterService, HeaderComponent, AppComponent,
