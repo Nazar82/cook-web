@@ -4,29 +4,35 @@ import { Injectable } from '@angular/core';
 
 export class PaginationService {
 
-    getTotalPages(recipesNumber: number): number {
-        return Math.ceil(recipesNumber / 2);
+    getTotalPages(itemsNumber: number): number {
+        return Math.ceil(itemsNumber / 2);
     }
 
-    getPagesNumber(recipesNumber: number, currentPage: number) {
+    getPagesNumber(itemsNumber: number, currentPage: number) {
         const pages = [];
-        const totalPages = this.getTotalPages(recipesNumber);
-        let startPage = 1;
+        const totalPages = this.getTotalPages(itemsNumber);
+        let startPage: number;
         let endPage: number;
 
-        if (totalPages <= 4) {
-            startPage = 1;
+        const start = 1;
+        const end = 5;
+        const mimPageNumber = 4;
+        const minCurrentPageNumber = 3;
+        const step = 2;
+
+        if (totalPages <= mimPageNumber) {
+            startPage = start;
             endPage = totalPages;
         } else {
-            if (currentPage <= 3) {
-                startPage = 1;
-                endPage = 5;
-            } else if (currentPage + 2 >= totalPages) {
-                startPage = totalPages - 4;
+            if (currentPage <= minCurrentPageNumber) {
+                startPage = start;
+                endPage = end;
+            } else if (currentPage + step >= totalPages) {
+                startPage = totalPages - mimPageNumber;
                 endPage = totalPages;
             } else {
-                startPage = currentPage - 2;
-                endPage = currentPage + 2;
+                startPage = currentPage - step;
+                endPage = currentPage + step;
             }
         }
         for (let i = startPage; i <= endPage; i++) {
