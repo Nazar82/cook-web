@@ -20,23 +20,27 @@ export class SectionComponent implements OnInit {
     private appComponent: AppComponent
   ) { }
 
-  filterByMain(filter) {
+  filterByMain(filter: string): void {
     this.passingFilterSrvice.saveFilter(filter);
-    this.router.navigate(['/recipes'], { queryParams: { main_ingredient: filter } });
+    this.router.navigate(['/recipes'], { queryParams: { main_ingredient: filter, page: 1 } });
   }
 
-  filterByType(filter) {
+  filterByType(filter: string): void {
     this.passingFilterSrvice.saveFilter(filter);
-    this.router.navigate(['/recipes'], { queryParams: { dish_type: filter } });
+    this.router.navigate(['/recipes'], { queryParams: { dish_type: filter, page: 1 } });
   }
 
-  filterByCuisine(filter) {
+  filterByCuisine(filter: string): void {
     this.passingFilterSrvice.saveFilter(filter);
-    this.router.navigate(['/recipes'], { queryParams: { cuisine: filter } });
+    this.router.navigate(['/recipes'], { queryParams: { cuisine: filter, page: 1 } });
   }
 
   hideMenu() {
     this.appComponent.block = undefined;
+  }
+
+  redirectHome(): void {
+    this.router.navigate(['./recipes'], { queryParams: { page: 1 } });
   }
 
   ngOnInit() {

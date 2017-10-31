@@ -4,6 +4,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 import { Recipe } from '../../models/recipe';
 import { RecipeService } from '../../services/recipe.service';
+import { PaginationService } from '../../services/pagination.service';
 import { Router, Event, NavigationEnd, ActivatedRoute, Params } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 
@@ -20,15 +21,21 @@ export class RecipesListComponent implements OnInit {
     private router: Router,
     private headerComponent: HeaderComponent,
     private ngZone: NgZone,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private paginationService: PaginationService
   ) { }
 
-  getAllRecipes(): void {
-    this.recipeService.getRecipes()
+  recipesNumber: number;
+  pages = [];
+  currentPage = 1;
+
+  getAllRecipes(page: string): void {
+    this.recipeService.getRecipes(page)
       .subscribe(
       recipes => {
-        console.log(recipes);
-        this.recipes = recipes;
+        this.recipes = recipes['recipes'];
+        this.recipesNumber = recipes['recipes_number'];
+        this.pages = this.paginationService.getPagesNumber(this.recipesNumber, this.currentPage);
       },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {
@@ -39,11 +46,12 @@ export class RecipesListComponent implements OnInit {
       });
   }
 
-  getRecipesByMain(main): void {
-    this.recipeService.getRecipesByMain(main).subscribe(
+  getRecipesByMain(main: string, page: string): void {
+    this.recipeService.getRecipesByMain(main, page).subscribe(
       (recipes) => {
-        this.recipes = recipes;
-        console.log(this.recipes);
+        this.recipes = recipes['recipes'];
+        this.recipesNumber = recipes['recipes_number'];
+        this.pages = this.paginationService.getPagesNumber(this.recipesNumber, this.currentPage);
       },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {
@@ -54,11 +62,12 @@ export class RecipesListComponent implements OnInit {
       });
   }
 
-  getRecipesByType(type): void {
-    this.recipeService.getRecipesByType(type).subscribe(
+  getRecipesByType(type: string, page: string): void {
+    this.recipeService.getRecipesByType(type, page).subscribe(
       (recipes) => {
-        this.recipes = recipes;
-        console.log(this.recipes);
+        this.recipes = recipes['recipes'];
+        this.recipesNumber = recipes['recipes_number'];
+        this.pages = this.paginationService.getPagesNumber(this.recipesNumber, this.currentPage);
       },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {
@@ -69,11 +78,12 @@ export class RecipesListComponent implements OnInit {
       });
   }
 
-  getRecipesByCuisine(cuisine): void {
-    this.recipeService.getRecipesByCuisine(cuisine).subscribe(
+  getRecipesByCuisine(cuisine: string, page: string): void {
+    this.recipeService.getRecipesByCuisine(cuisine, page).subscribe(
       (recipes) => {
-        this.recipes = recipes;
-        console.log(this.recipes);
+        this.recipes = recipes['recipes'];
+        this.recipesNumber = recipes['recipes_number'];
+        this.pages = this.paginationService.getPagesNumber(this.recipesNumber, this.currentPage);
       },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {
@@ -87,15 +97,23 @@ export class RecipesListComponent implements OnInit {
   getRecipes(): void {
     this.activatedRoute.queryParams.subscribe((params: Params) => {
       if (params['main_ingredient']) {
-        this.getRecipesByMain(params['main_ingredient']);
+        this.currentPage = Number(params['page']);
+        this.getRecipesByMain(params['main_ingredient'], params['page']);
       } else if (params['dish_type']) {
-        this.getRecipesByType(params['dish_type']);
+        this.currentPage = Number(params['page']);
+        this.getRecipesByType(params['dish_type'], params['page']);
       } else if (params['cuisine']) {
-        this.getRecipesByCuisine(params['cuisine']);
+        this.currentPage = Number(params['page']);
+        this.getRecipesByCuisine(params['cuisine'], params['page']);
       } else {
-        this.getAllRecipes();
+        params['page'] ? this.currentPage = Number(params['page']) : this.currentPage = 1;
+        this.getAllRecipes(params['page']);
       }
     });
+  }
+
+  getRecipesByPage(): void {
+    this.router.navigate(['/recipes/'], { queryParams: { page: this.currentPage }, queryParamsHandling: 'merge' });
   }
 
   redirect(id): void {
