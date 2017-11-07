@@ -9,35 +9,39 @@ export class PaginationService {
     }
 
     getPagesNumber(itemsNumber: number, currentPage: number) {
+        // If I use let instead of const here, VSC underlines it as a mistake.
         const pages = [];
-        const totalPages = this.getTotalPages(itemsNumber);
+        const numberOfAllPages = this.getTotalPages(itemsNumber);
         let startPage: number;
         let endPage: number;
 
         const start = 1;
         const end = 5;
-        const mimPageNumber = 4;
-        const minCurrentPageNumber = 3;
-        const step = 2;
+        const minNumberOfPages = 4;
+        const numberOfCentralPage = 3;
+        const increment = 2;
+        const decrement = 2;
 
-        if (totalPages <= mimPageNumber) {
+        if (numberOfAllPages <= minNumberOfPages) {
             startPage = start;
-            endPage = totalPages;
+            endPage = numberOfAllPages;
         } else {
-            if (currentPage <= minCurrentPageNumber) {
+            if (currentPage <= numberOfCentralPage) {
                 startPage = start;
                 endPage = end;
-            } else if (currentPage + step >= totalPages) {
-                startPage = totalPages - mimPageNumber;
-                endPage = totalPages;
+            } else if (currentPage + increment >= numberOfAllPages) {
+                startPage = numberOfAllPages - minNumberOfPages;
+                endPage = numberOfAllPages;
             } else {
-                startPage = currentPage - step;
-                endPage = currentPage + step;
+                startPage = currentPage - decrement;
+                endPage = currentPage + increment;
             }
         }
         for (let i = startPage; i <= endPage; i++) {
             pages.push(i);
         }
         return pages;
+       // Tried to use the method You have suggested, but there is some problem with types.
+       // return [...Array(numberOfAllPages + 1).keys()].slice(startPage, endPage);
     }
 }
