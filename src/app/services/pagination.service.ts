@@ -37,11 +37,6 @@ export class PaginationService {
                 endPage = currentPage + increment;
             }
         }
-        for (let i = startPage; i <= endPage; i++) {
-            pages.push(i);
-        }
-        return pages;
-       // Tried to use the method You have suggested, but there is some problem with types.
-       // return [...Array(numberOfAllPages + 1).keys()].slice(startPage, endPage);
+       return [...<any>Array(numberOfAllPages + 1).keys()].slice(startPage, endPage);
     }
 }
