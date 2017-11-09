@@ -17,30 +17,32 @@ export class RecipeService {
     private authService: AuthService
   ) { }
 
-  getRecipes(): Observable<Recipe[]> {
-    return this.http.get<Recipe[]>(`${API_URL}/api/recipes`);
+  getRecipes(page: string): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(`${API_URL}/api/recipes`, {
+      params: new HttpParams().set('page', page),
+    });
   }
 
   getOneRecipe(id: string): Observable<Recipe> {
     return this.http.get<Recipe>(`${API_URL}/api/recipes/${id}`);
   }
 
-  getRecipesByMain(main: string): Observable<Recipe[]> {
+  getRecipesByMain(main: string, page: string): Observable<Recipe[]> {
     return this.http.get<Recipe[]>(`${API_URL}/api/recipesbymain`, {
-      params: new HttpParams().set('main', main),
+      params: new HttpParams().set('main', main).set('page', page),
     });
   }
 
-  getRecipesByType(type: string): Observable<Recipe[]> {
+  getRecipesByType(type: string, page: string): Observable<Recipe[]> {
     console.log(type);
     return this.http.get<Recipe[]>(`${API_URL}/api/recipesbytype`, {
-      params: new HttpParams().set('type', type),
+      params: new HttpParams().set('type', type).set('page', page),
     });
   }
 
-  getRecipesByCuisine(cuisine: string): Observable<Recipe[]> {
+  getRecipesByCuisine(cuisine: string, page: string): Observable<Recipe[]> {
     return this.http.get<Recipe[]>(`${API_URL}/api/recipesbycuisine`, {
-      params: new HttpParams().set('cuisine', cuisine),
+      params: new HttpParams().set('cuisine', cuisine).set('page', page),
     });
   }
 

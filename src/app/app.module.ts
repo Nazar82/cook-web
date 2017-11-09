@@ -24,6 +24,7 @@ import { AppRoutingModule } from './routing/app.routing.module';
 import { RecipeService } from './services/recipe.service';
 import { PassingIdService } from './services/passing-id.service';
 import { PassingFilterService } from './services/passing-filter.service';
+import { PaginationService } from './services/pagination.service';
 
 import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './services/auth-interceptor.service';
@@ -55,6 +56,7 @@ import { AuthInterceptor } from './services/auth-interceptor.service';
   ],
   providers: [RecipeService, PassingIdService, AuthService, HeaderComponent,
     RecipesListComponent, PassingFilterService, HeaderComponent, AppComponent,
+    PaginationService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

@@ -3,12 +3,24 @@
   <h6>Register and login to add Your own recipes</h6>
   <nav>
     <ul>
-      <li><a routerLink='/'>Home</a></li>
-      <li><a routerLink='/about'>About</a></li>
-      <li *ngIf='auth.isAuthorized()'><a routerLink='/add'>Add Recipe</a></li>
-      <li *ngIf='!auth.isAuthorized()'><a routerLink='/register'>Register</a></li>
-      <li *ngIf='!auth.isAuthorized()'><a routerLink='/login'>Login</a></li>
-      <li *ngIf='auth.isAuthorized()'><a (click)='onLogout()' routerLink='/'>Logout</a></li>
+      <li>
+        <a routerLink='/' (click)="redirectHome()">Home</a>
+      </li>
+      <li>
+        <a routerLink='/about'>About</a>
+      </li>
+      <li *ngIf='auth.isAuthorized()'>
+        <a routerLink='/add'>Add Recipe</a>
+      </li>
+      <li *ngIf='!auth.isAuthorized()'>
+        <a routerLink='/register'>Register</a>
+      </li>
+      <li *ngIf='!auth.isAuthorized()'>
+        <a routerLink='/login'>Login</a>
+      </li>
+      <li *ngIf='auth.isAuthorized()'>
+        <a (click)='onLogout()' routerLink='/'>Logout</a>
+      </li>
     </ul>
   </nav>
   <div class="input-group input-group-sm">

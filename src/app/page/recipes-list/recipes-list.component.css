@@ -3,6 +3,7 @@
     flex-wrap: wrap;
     justify-content: space-around;
     margin-top: 2em;
+    min-height: 300px;
 }
 
 .recipe {
@@ -23,6 +24,19 @@ a {
 .recipe:hover {
     color: white;
     cursor: pointer;
+}
+
+.active {
+    background-color: #cbcff1;
+}
+
+.nav-container a {
+    color: rgb(87, 137, 238);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
 }
 
 @media only screen and (max-width: 1000px) {
