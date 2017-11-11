@@ -6,12 +6,11 @@ import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute, Params, ParamMap, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-add-recipe',
-  templateUrl: './add-recipe.component.html',
-  styleUrls: ['./add-recipe.component.css']
+  selector: 'app-edit-recipe',
+  templateUrl: './edit-recipe.component.html',
+  styleUrls: ['./edit-recipe.component.css']
 })
-
-export class AddRecipeComponent implements OnInit {
+export class EditRecipeComponent implements OnInit {
   recipe: Recipe;
   title: string;
   descript: string;
@@ -20,16 +19,17 @@ export class AddRecipeComponent implements OnInit {
   main: string;
   type: string;
   cuisine: string;
-  posted_by: string = JSON.parse(this.authService.loadUser()).username;
+  posted_by: string;
 
-  constructor(private recipeService: RecipeService,
+  constructor(
+    private recipeService: RecipeService,
     private authService: AuthService,
     private passingRecipeService: PassingRecipeService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
   ) { }
 
-  addRecipe(): void {
+  updateRecipe(): void {
     this.recipe = new Recipe(
       this.title,
       this.descript,
@@ -40,8 +40,9 @@ export class AddRecipeComponent implements OnInit {
       this.cuisine,
       this.posted_by
     );
+    this.activatedRoute.paramMap
+      .subscribe((params: ParamMap) => this.recipeService.updateRecipe(this.recipe, params.get('id')));
 
-    this.recipeService.addRecipe(this.recipe);
     this.title = '';
     this.descript = '';
     this.ingredients = '';
@@ -49,10 +50,20 @@ export class AddRecipeComponent implements OnInit {
     this.main = '';
     this.type = '';
     this.cuisine = '';
+    // Used here setTimeout to let server update the database.
+    // Without setTimeout changes were not immediately displayed after redirection. Is it a good practice?
     setTimeout(() => this.router.navigate(['./']), 500);
   }
 
   ngOnInit() {
+    this.recipe = this.passingRecipeService.getRecipe();
+    this.title = this.recipe.title;
+    this.descript = this.recipe.descript;
+    this.ingredients = this.recipe.ingredients;
+    this.directions = this.recipe.directions;
+    this.main = this.recipe.main;
+    this.type = this.recipe.type;
+    this.cuisine = this.recipe.cuisine;
+    this.posted_by = this.recipe.posted_by;
   }
-
 }

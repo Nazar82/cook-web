@@ -5,7 +5,6 @@ import { Observable } from 'rxjs/Observable';
 import { Recipe } from '../models/recipe';
 import { API_URL } from '../urls/urls';
 import { AuthService } from '../services/auth.service';
-
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -53,5 +52,22 @@ export class RecipeService {
       (error) => console.error(error)
       );
   }
+
+  updateRecipe(recipe: Recipe, id: string) {
+    return this.http.put(`${API_URL}/api/recipe/${id}`, recipe)
+      .subscribe(
+      (response) => console.log(response),
+      (error) => console.error(error)
+      );
+  }
+
+  deletRecipe(id: string) {
+    return this.http.delete(`${API_URL}/api/recipe/${id}`)
+      .subscribe(
+      (response) => console.log(response),
+      (error) => console.error(error)
+      );
+  }
+
 }
 

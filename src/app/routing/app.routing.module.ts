@@ -7,12 +7,14 @@ import { RegisterComponent } from '../page/register/register.component';
 import { LoginComponent } from '../page/login/login.component';
 import { FullRecipeComponent } from '../page/full-recipe/full-recipe.component';
 import { AddRecipeComponent } from '../page/add-recipe/add-recipe.component';
+import { EditRecipeComponent } from '../page/edit/edit-recipe.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
   { path: 'recipes', component: RecipesListComponent },
   { path: 'about', component: AboutComponent },
   { path: 'add', component: AddRecipeComponent },
+  { path: 'edit/:id', component: EditRecipeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'logout', redirectTo: '/recipes' },

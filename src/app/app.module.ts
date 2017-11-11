@@ -23,11 +23,13 @@ import { AddRecipeComponent } from './page/add-recipe/add-recipe.component';
 import { AppRoutingModule } from './routing/app.routing.module';
 import { RecipeService } from './services/recipe.service';
 import { PassingIdService } from './services/passing-id.service';
+import { PassingRecipeService } from './services/passing-recipe.service';
 import { PassingFilterService } from './services/passing-filter.service';
 import { PaginationService } from './services/pagination.service';
 
 import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './services/auth-interceptor.service';
+import { EditRecipeComponent } from './page/edit/edit-recipe.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { AuthInterceptor } from './services/auth-interceptor.service';
     RegisterComponent,
     LoginComponent,
     FullRecipeComponent,
-    AddRecipeComponent
+    AddRecipeComponent,
+    EditRecipeComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,7 @@ import { AuthInterceptor } from './services/auth-interceptor.service';
   ],
   providers: [RecipeService, PassingIdService, AuthService, HeaderComponent,
     RecipesListComponent, PassingFilterService, HeaderComponent, AppComponent,
-    PaginationService,
+    PaginationService, PassingRecipeService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

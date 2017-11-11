@@ -40,6 +40,10 @@ export class AuthService {
     return localStorage.getItem('token') || '';
   }
 
+  loadUser(): string {
+    return localStorage.getItem('user') || '{}';
+  }
+
   isAuthorized(): string {
     return this.loadToken();
   }
