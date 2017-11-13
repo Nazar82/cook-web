@@ -53,11 +53,9 @@ export class FullRecipeComponent implements OnInit {
   redirect(id): void {
     this.passingRecipeService.saveRecipe(this.recipe);
     this.router.navigate(['./edit', id]);
-    console.log(id);
   }
 
   deleteRecipe(id): void {
-    console.log(id);
     const conFirm = confirm('The recipe will be permanently deleted. Continue?');
     if (conFirm) {
       this.recipeService.deletRecipe(id);
@@ -68,6 +66,5 @@ export class FullRecipeComponent implements OnInit {
   ngOnInit(): void {
     this.getOneRecipe();
     this.current_user = JSON.parse(this.authService.loadUser());
-    console.log(this.current_user);
   }
 }

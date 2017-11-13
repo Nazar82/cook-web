@@ -24,7 +24,6 @@ export class AddRecipeComponent implements OnInit {
 
   constructor(private recipeService: RecipeService,
     private authService: AuthService,
-    private passingRecipeService: PassingRecipeService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) { }

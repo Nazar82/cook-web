@@ -4,19 +4,41 @@ import { AddRecipeComponent } from './add-recipe.component';
 import { Recipe } from '../../models/recipe';
 import { RecipeService } from '../../services/recipe.service';
 import { AuthService } from '../../services/auth.service';
-import { HttpClient } from '@angular/common/http';
-import { HttpHandler } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRouteStub } from '../../../test-helpers/AcrivatedRouteStub';
+import { RouterStub } from '../../../test-helpers/RouterStub';
+import { RecipeServiceMock } from '../../../test-helpers/RecipeServiceMock';
+import { AuthServiceMock } from '../../../test-helpers/AuthServiceMock';
+import { By } from '@angular/platform-browser';
 
 fdescribe('AddRecipeComponent', () => {
   let component: AddRecipeComponent;
   let fixture: ComponentFixture<AddRecipeComponent>;
-  let recipeService: RecipeService;
+  let recipeServiceMock;
+  let activatedRouteStub;
+  let recipeService;
+  let authService;
+  let authServiceMock;
+  let routerStub;
+  let activatedRoute;
+  let router;
+
+  beforeEach(() => {
+    recipeServiceMock = new RecipeServiceMock();
+    activatedRouteStub = new ActivatedRouteStub();
+    authServiceMock = new AuthServiceMock();
+    routerStub = new RouterStub();
+  });
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
       declarations: [AddRecipeComponent],
-      providers: [RecipeService, AuthService, HttpClient, HttpHandler]
+      providers: [{ provide: RecipeService, useValue: recipeServiceMock },
+      { provide: AuthService, useValue: authServiceMock },
+      { provide: ActivatedRoute, useValue: activatedRouteStub },
+      { provide: Router, useValue: routerStub },
+      ]
     })
       .compileComponents();
   }));
@@ -25,24 +47,36 @@ fdescribe('AddRecipeComponent', () => {
     fixture = TestBed.createComponent(AddRecipeComponent);
     component = fixture.componentInstance;
     recipeService = TestBed.get(RecipeService);
+    authService = TestBed.get(AuthService);
+    activatedRoute = TestBed.get(ActivatedRoute);
+    router = TestBed.get(Router);
     fixture.detectChanges();
   });
 
-  it('should create component', () => {
+  it('should create component and set value to posted_by', () => {
     expect(component).toBeTruthy();
+    expect(component.posted_by).toBe('Mike');
   });
 
-  it('should create recipe', () => {
-    spyOn(component, 'addRecipe').and.callThrough();
-    spyOn(recipeService, 'addRecipe').and.callThrough();
+  it('should call RecipeService addRecipe() method', () => {
+    spyOn(recipeService, 'addRecipe');
     component.addRecipe();
-    expect(component.recipe).toBeTruthy();
     expect(recipeService.addRecipe).toHaveBeenCalled();
   });
-  it('should fire addRecipe() method', async() => {
+
+  it('should call component addRecipe() method', () => {
     spyOn(component, 'addRecipe');
-    const button = fixture.debugElement.nativeElement.querySelector('input');
-    button.triggerEventHandler('click', null);
-    fixture.whenStable().then(() => expect(component.addRecipe).toHaveBeenCalled());
+    fixture.nativeElement.querySelector('.addBtn').click();
+    expect(component.addRecipe).toHaveBeenCalled();
   });
+
+  it('should navigate to home page', () => {
+    jasmine.clock().install();
+    spyOn(router, 'navigate');
+    component.addRecipe();
+    jasmine.clock().tick(501);
+    expect(router.navigate).toHaveBeenCalledWith(['./']);
+    jasmine.clock().uninstall();
+  });
+
 });
