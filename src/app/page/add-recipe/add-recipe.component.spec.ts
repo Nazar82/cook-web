@@ -1,15 +1,16 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { AddRecipeComponent } from './add-recipe.component';
 import { Recipe } from '../../models/recipe';
 import { RecipeService } from '../../services/recipe.service';
 import { AuthService } from '../../services/auth.service';
-import { ActivatedRoute, Router } from '@angular/router';
+
 import { ActivatedRouteStub } from '../../../test-helpers/AcrivatedRouteStub';
 import { RouterStub } from '../../../test-helpers/RouterStub';
 import { RecipeServiceMock } from '../../../test-helpers/RecipeServiceMock';
 import { AuthServiceMock } from '../../../test-helpers/AuthServiceMock';
-import { By } from '@angular/platform-browser';
 
 fdescribe('AddRecipeComponent', () => {
   let component: AddRecipeComponent;
@@ -61,13 +62,13 @@ fdescribe('AddRecipeComponent', () => {
   it('should call RecipeService addRecipe() method', () => {
     spyOn(recipeService, 'addRecipe');
     component.addRecipe();
-    expect(recipeService.addRecipe).toHaveBeenCalled();
+    expect(recipeService.addRecipe).toHaveBeenCalledTimes(1);
   });
 
   it('should call component addRecipe() method', () => {
     spyOn(component, 'addRecipe');
     fixture.nativeElement.querySelector('.addBtn').click();
-    expect(component.addRecipe).toHaveBeenCalled();
+    expect(component.addRecipe).toHaveBeenCalledTimes(1);
   });
 
   it('should navigate to home page', () => {

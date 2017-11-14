@@ -65,6 +65,7 @@ export class FullRecipeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getOneRecipe();
-    this.current_user = JSON.parse(this.authService.loadUser());
+    const userObj = JSON.parse(this.authService.loadUser());
+    this.current_user = userObj.username;
   }
 }
