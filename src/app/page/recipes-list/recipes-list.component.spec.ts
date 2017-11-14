@@ -43,7 +43,7 @@ fdescribe('RecipesListComponent', () => {
   });
 
 
-  it('should set the reciepes property when initialised', () => {
+  it('should call getRecipe() method when initialised', () => {
     spyOn(component, 'ngOnInit').and.callThrough();
     expect(component.getRecipes()).toHaveBeenCalled();
   });

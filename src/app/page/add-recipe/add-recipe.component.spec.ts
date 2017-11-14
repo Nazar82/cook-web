@@ -34,11 +34,15 @@ fdescribe('AddRecipeComponent', () => {
 
   it('should create recipe', () => {
     spyOn(component, 'addRecipe').and.callThrough();
+    spyOn(recipeService, 'addRecipe').and.callThrough();
+    component.addRecipe();
     expect(component.recipe).toBeTruthy();
-  });
-
-  it('should create recipe', () => {
-    spyOn(component, 'addRecipe').and.callThrough();
     expect(recipeService.addRecipe).toHaveBeenCalled();
+  });
+  it('should fire addRecipe() method', async() => {
+    spyOn(component, 'addRecipe');
+    const button = fixture.debugElement.nativeElement.querySelector('input');
+    button.triggerEventHandler('click', null);
+    fixture.whenStable().then(() => expect(component.addRecipe).toHaveBeenCalled());
   });
 });

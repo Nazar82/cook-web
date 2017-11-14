@@ -1,13 +1,11 @@
 import { Component, OnInit, Optional, NgZone } from '@angular/core';
 import { Response } from '@angular/http';
 import { HttpErrorResponse } from '@angular/common/http';
-
 import { Recipe } from '../../models/recipe';
 import { RecipeService } from '../../services/recipe.service';
 import { PaginationService } from '../../services/pagination.service';
 import { Router, Event, NavigationEnd, ActivatedRoute, Params } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
-
 
 @Component({
   selector: 'app-recipes-list',

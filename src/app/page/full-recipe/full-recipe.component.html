@@ -6,6 +6,8 @@
   <h4>Directions</h4>
   <p>{{recipe.directions}}</p>
   <small>Posted by {{recipe.posted_by}}</small>
-  <button type="button" class="btn btn-primary btn-sm">Edit</button>
-  <button type="button" class="btn btn-primary btn-sm">Delete</button>
+  <div *ngIf='current_user.username === recipe.posted_by'>
+    <button type="button" class="btn btn-primary btn-sm" (click)='redirect(recipe._id);'>Edit</button>
+    <button type="button" class="btn btn-primary btn-sm" (click)='deleteRecipe(recipe._id);'>Delete</button>
+  </div>
 </div>
