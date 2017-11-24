@@ -17,7 +17,7 @@ import { RecipesListComponent } from './recipes-list.component';
 import { HeaderComponent } from '../header/header.component';
 import { AppComponent } from '../main/app.component';
 
-fdescribe('RecipesListComponent', () => {
+describe('RecipesListComponent', () => {
   let component: RecipesListComponent;
   let fixture: ComponentFixture<RecipesListComponent>;
   let de: DebugElement;
