@@ -10,20 +10,20 @@ import { AddRecipeComponent } from '../page/add-recipe/add-recipe.component';
 import { EditRecipeComponent } from '../page/edit/edit-recipe.component';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/recipes', pathMatch: 'full' },
-  { path: 'recipes', component: RecipesListComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'add', component: AddRecipeComponent },
-  { path: 'edit/:id', component: EditRecipeComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'logout', redirectTo: '/recipes' },
-  { path: 'recipes/:id', component: FullRecipeComponent }
+    { path: '', redirectTo: '/recipes', pathMatch: 'full' },
+    { path: 'recipes', component: RecipesListComponent },
+    { path: 'about', component: AboutComponent },
+    { path: 'add', component: AddRecipeComponent },
+    { path: 'recipes/:id/edit', component: EditRecipeComponent },
+    { path: 'register', component: RegisterComponent },
+    { path: 'login', component: LoginComponent },
+    { path: 'logout', redirectTo: '/recipes' },
+    { path: 'recipes/:id', component: FullRecipeComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(appRoutes)],
+    exports: [RouterModule]
 })
 
 export class AppRoutingModule { }

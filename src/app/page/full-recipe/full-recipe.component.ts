@@ -13,7 +13,6 @@ import 'rxjs/add/operator/switchMap';
   templateUrl: './full-recipe.component.html',
   styleUrls: ['./full-recipe.component.css']
 })
-
 export class FullRecipeComponent implements OnInit {
   recipe: Recipe = {
     title: '',
@@ -27,7 +26,8 @@ export class FullRecipeComponent implements OnInit {
   };
   current_user = '';
 
-  constructor(private recipeService: RecipeService,
+  constructor(
+    private recipeService: RecipeService,
     private activatedRoute: ActivatedRoute,
     private passingRecipeService: PassingRecipeService,
     private authService: AuthService,
@@ -36,27 +36,34 @@ export class FullRecipeComponent implements OnInit {
 
   getOneRecipe(): void {
     this.activatedRoute.paramMap
-      .switchMap((params: ParamMap) => this.recipeService.getOneRecipe(params.get('id')))
+      .switchMap((params: ParamMap) =>
+        this.recipeService.getOneRecipe(params.get('id'))
+      )
       .subscribe(
-      recipe => {
-        this.recipe = recipe;
-      },
-      (err: HttpErrorResponse) => {
-        if (err.error instanceof Error) {
-          console.error('An error occurred:', err.error.message);
-        } else {
-          console.error(`Backend returned code ${err.status}, body was: ${err.error}`);
+        recipe => {
+          this.recipe = recipe;
+        },
+        (err: HttpErrorResponse) => {
+          if (err.error instanceof Error) {
+            console.error('An error occurred:', err.error.message);
+          } else {
+            console.error(
+              `Backend returned code ${err.status}, body was: ${err.error}`
+            );
+          }
         }
-      });
+      );
   }
 
   redirect(id): void {
     this.passingRecipeService.saveRecipe(this.recipe);
-    this.router.navigate(['./edit', id]);
+    this.router.navigate(['./recipes', id, 'edit']);
   }
 
   deleteRecipe(id): void {
-    const conFirm = confirm('The recipe will be permanently deleted. Continue?');
+    const conFirm = confirm(
+      'The recipe will be permanently deleted. Continue?'
+    );
     if (conFirm) {
       this.recipeService.deletRecipe(id);
       setTimeout(() => this.router.navigate(['./']), 500);
