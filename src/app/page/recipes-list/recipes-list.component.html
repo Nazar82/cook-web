@@ -1,29 +1,29 @@
 <div class='recipe-container'>
-  <div *ngFor='let recipe of recipes' class='recipe'>
-    <div (click)='redirect(recipe._id);'>
-      <h5>{{recipe.title}}</h5>
-      <p>{{recipe.descript}}</p>
+    <div *ngFor='let recipe of recipes' class='recipe'>
+        <div (click)='redirect(recipe._id);'>
+            <h5>{{recipe.title}}</h5>
+            <p>{{recipe.descript}}</p>
+        </div>
     </div>
-  </div>
 </div>
 <div class="nav-container">
-  <nav>
-    <ul class="pagination pagination-sm">
-      <li class="page-item" [ngClass]="{disabled:currentPage === 1}">
-        <a class="page-link" routerLink='/recipes' tabindex="-1" (click)="getRecipesByPage(currentPage = currentPage - 1)">Previous</a>
-      </li>
-      <li class="page-item" [ngClass]="{disabled:currentPage === 1}">
-        <a class="page-link" routerLink='/recipes' tabindex="-1" (click)="getRecipesByPage(currentPage = 1)">First</a>
-      </li>
-      <li *ngFor="let page of pages" class="page-item">
-        <a class="page-link" routerLink='/recipes' (click)="getRecipesByPage(currentPage = page)" [ngClass]="{active: currentPage === page}">{{page}}</a>
-      </li>
-      <li class="page-item" [ngClass]="{disabled:currentPage === pages[pages.length - 1]}">
-        <a class="page-link" routerLink='/recipes' (click)="getRecipesByPage(currentPage = totalPages)">Last</a>
-      </li>
-      <li class="page-item" [ngClass]="{disabled:currentPage === pages[pages.length - 1]}">
-        <a class="page-link" routerLink='/recipes' (click)="getRecipesByPage(currentPage = currentPage + 1)">Next</a>
-      </li>
-    </ul>
-  </nav>
+    <nav>
+        <ul class="pagination pagination-sm">
+            <li class="page-item" [ngClass]="{disabled:currentPage === 1}">
+                <a class="page-link" routerLink='/recipes' tabindex="-1" (click)="getRecipesByPage(currentPage = currentPage - 1)">Previous</a>
+            </li>
+            <li class="page-item" [ngClass]="{disabled:currentPage === 1}">
+                <a class="page-link" routerLink='/recipes' tabindex="-1" (click)="getRecipesByPage(currentPage = 1)">First</a>
+            </li>
+            <li *ngFor="let page of pages" class="page-item">
+                <a class="page-link" routerLink='/recipes' (click)="getRecipesByPage(currentPage = page)" [ngClass]="{active: currentPage === page}">{{page}}</a>
+            </li>
+            <li class="page-item" [ngClass]="{disabled:currentPage === pages[pages.length - 1]}">
+                <a class="page-link" routerLink='/recipes' (click)="getRecipesByPage(currentPage = totalPages)">Last</a>
+            </li>
+            <li class="page-item" [ngClass]="{disabled:currentPage === pages[pages.length - 1]}">
+                <a class="page-link" routerLink='/recipes' (click)="getRecipesByPage(currentPage = currentPage + 1)">Next</a>
+            </li>
+        </ul>
+    </nav>
 </div>

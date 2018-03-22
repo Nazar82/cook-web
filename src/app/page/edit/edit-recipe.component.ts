@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { Recipe } from '../../models/recipe';
-import { RecipeService } from '../../services/recipe.service';
-import { PassingRecipeService } from '../../services/passing-recipe.service';
-import { AuthService } from '../../services/auth.service';
-import { ActivatedRoute, Params, ParamMap, Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { Recipe } from "../../models/recipe";
+import { RecipeService } from "../../services/recipe.service";
+import { PassingRecipeService } from "../../services/passing-recipe.service";
+import { AuthService } from "../../services/auth.service";
+import { ActivatedRoute, Params, ParamMap, Router } from "@angular/router";
 
 @Component({
-  selector: 'app-edit-recipe',
-  templateUrl: './edit-recipe.component.html',
-  styleUrls: ['./edit-recipe.component.css']
+  selector: "app-edit-recipe",
+  templateUrl: "./edit-recipe.component.html",
+  styleUrls: ["./edit-recipe.component.css"]
 })
 export class EditRecipeComponent implements OnInit {
   recipe: Recipe;
@@ -26,8 +26,8 @@ export class EditRecipeComponent implements OnInit {
     private authService: AuthService,
     private passingRecipeService: PassingRecipeService,
     private activatedRoute: ActivatedRoute,
-    private router: Router,
-  ) { }
+    private router: Router
+  ) {}
 
   updateRecipe(): void {
     this.recipe = new Recipe(
@@ -40,19 +40,20 @@ export class EditRecipeComponent implements OnInit {
       this.cuisine,
       this.posted_by
     );
-    this.activatedRoute.paramMap
-      .subscribe((params: ParamMap) => this.recipeService.updateRecipe(this.recipe, params.get('id')));
+    this.activatedRoute.paramMap.subscribe((params: ParamMap) =>
+      this.recipeService.updateRecipe(this.recipe, params.get("id"))
+    );
 
-    this.title = '';
-    this.descript = '';
-    this.ingredients = '';
-    this.directions = '';
-    this.main = '';
-    this.type = '';
-    this.cuisine = '';
+    this.title = "";
+    this.descript = "";
+    this.ingredients = "";
+    this.directions = "";
+    this.main = "";
+    this.type = "";
+    this.cuisine = "";
     // Used here setTimeout to let server update the database.
     // Without setTimeout changes were not immediately displayed after redirection. Is it a good practice?
-    setTimeout(() => this.router.navigate(['./']), 500);
+    setTimeout(() => this.router.navigate(["./"]), 500);
   }
 
   ngOnInit() {
