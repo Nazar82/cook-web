@@ -8,6 +8,7 @@ import { AuthService } from '../services/auth.service';
 import 'rxjs/add/operator/map';
 
 @Injectable()
+
 export class RecipeService {
 
     private headers = new Headers({ 'Content-Type': 'application/json' });
@@ -33,7 +34,6 @@ export class RecipeService {
     }
 
     getRecipesByType(type: string, page: string): Observable<Recipe[]> {
-        console.log(type);
         return this.http.get<Recipe[]>(`${API_URL}/api/recipesbytype`, {
             params: new HttpParams().set('type', type).set('page', page),
         });

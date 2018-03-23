@@ -34,8 +34,8 @@ export class EditRecipeComponent implements OnInit {
         this.recipe = new Recipe(
             this.title,
             this.descript,
-            this.ingredients,
-            this.directions,
+            this.ingredients.replace(/\n+/g, '\n'),
+            this.directions.replace(/\n+/g, '\n\n'),
             this.main,
             this.type,
             this.cuisine,
@@ -52,8 +52,7 @@ export class EditRecipeComponent implements OnInit {
         this.main = '';
         this.type = '';
         this.cuisine = '';
-        // Used here setTimeout to let server update the database.
-        // Without setTimeout changes were not immediately displayed after redirection. Is it a good practice?
+
         setTimeout(() => this.router.navigate(['./']), 500);
     }
 

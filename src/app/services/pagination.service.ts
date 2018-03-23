@@ -5,16 +5,16 @@ import { Injectable } from '@angular/core';
 export class PaginationService {
 
     getTotalPages(itemsNumber: number): number {
-        return Math.ceil(itemsNumber / 2);
+        const recipesPerPage = 4;
+        return Math.ceil(itemsNumber / recipesPerPage);
     }
 
     getPagesNumber(itemsNumber: number, currentPage: number) {
-        // If I use let instead of const here, VSC underlines it as a mistake.
+
         const pages = [];
         const numberOfAllPages = this.getTotalPages(itemsNumber);
         let startPage: number;
         let endPage: number;
-
         const start = 1;
         const end = 5;
         const minNumberOfPages = 4;
@@ -24,7 +24,7 @@ export class PaginationService {
 
         if (numberOfAllPages <= minNumberOfPages) {
             startPage = start;
-            endPage = numberOfAllPages;
+            endPage = numberOfAllPages + 1;
         } else {
             if (currentPage <= numberOfCentralPage) {
                 startPage = start;
@@ -37,6 +37,6 @@ export class PaginationService {
                 endPage = currentPage + increment;
             }
         }
-       return [...<any>Array(numberOfAllPages + 1).keys()].slice(startPage, endPage);
+        return [...<any>Array(numberOfAllPages + 1).keys()].slice(startPage, endPage);
     }
 }

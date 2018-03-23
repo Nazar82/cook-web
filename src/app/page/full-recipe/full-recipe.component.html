@@ -1,13 +1,13 @@
 <div class="container">
-  <h4>{{recipe.title}}</h4>
-  <p>{{recipe.descript}}</p>
-  <h4>Ingredients</h4>
-  <p>{{recipe.ingredients}}</p>
-  <h4>Directions</h4>
-  <p>{{recipe.directions}}</p>
-  <small>Posted by {{recipe.posted_by}}</small>
-  <div *ngIf='current_user === recipe.posted_by'>
-    <button type="button" class="btn edit btn-primary btn-sm" (click)='redirect(recipe._id)'>Edit</button>
-    <button type="button" class="btn delete btn-primary btn-sm" (click)='deleteRecipe(recipe._id);'>Delete</button>
-  </div>
+    <h4>{{recipe.title}}</h4>
+    <p>{{recipe.descript}}</p>
+    <h4>Ingredients</h4>
+    <p>{{recipe.ingredients}}</p>
+    <h4>Directions</h4>
+    <p>{{recipe.directions}}</p>
+    <small>Posted by {{recipe.posted_by}}</small>
+    <div *ngIf='current_user === recipe.posted_by'>
+        <button type="button" class="btn edit btn-primary btn-sm" (click)='redirect(recipe._id)'>Edit</button>
+        <button type="button" class="btn delete btn-primary btn-sm" (click)='deleteRecipe(recipe._id);'>Delete</button>
+    </div>
 </div>

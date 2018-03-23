@@ -16,7 +16,6 @@ import { RecipeCardComponent } from '../recipe-card/recipe-card.component';
 })
 
 export class RecipesListComponent implements OnInit {
-    recipes: Recipe[] = [];
 
     constructor(private recipeService: RecipeService,
         private router: Router,
@@ -26,6 +25,7 @@ export class RecipesListComponent implements OnInit {
         private paginationService: PaginationService
     ) { }
 
+    recipes: Recipe[] = [];
     recipesNumber: number;
     pages = [];
     currentPage = 1;
@@ -39,6 +39,7 @@ export class RecipesListComponent implements OnInit {
                     this.recipesNumber = recipes['recipes_number'];
                     this.pages = this.paginationService.getPagesNumber(this.recipesNumber, this.currentPage);
                     this.totalPages = this.paginationService.getTotalPages(this.recipesNumber);
+
                 },
                 (err: HttpErrorResponse) => {
                     if (err.error instanceof Error) {
@@ -71,6 +72,7 @@ export class RecipesListComponent implements OnInit {
                 this.recipes = recipes['recipes'];
                 this.recipesNumber = recipes['recipes_number'];
                 this.pages = this.paginationService.getPagesNumber(this.recipesNumber, this.currentPage);
+
             },
             (err: HttpErrorResponse) => {
                 if (err.error instanceof Error) {

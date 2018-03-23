@@ -19,7 +19,7 @@
                 <a class="page-link" routerLink='/recipes' (click)="getRecipesByPage(currentPage = totalPages)">Last</a>
             </li>
             <li class="page-item" [ngClass]="{disabled:currentPage === pages[pages.length - 1]}">
-                <a class="page-link" routerLink='/recipes' (click)="getRecipesByPage(currentPage = currentPage + 1)">Next</a>
+                <a class="page-link" routerLink='/recipes' (click)="getRecipesByPage(currentPage = currentPage + 1)" [ngClass]="{disabled:currentPage === totalPages}">Next</a>
             </li>
         </ul>
     </nav>
