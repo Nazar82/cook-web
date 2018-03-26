@@ -1,38 +1,38 @@
 <div class="header-container">
-  <h3>Tasty Recipes From Around The World</h3>
-  <h6>Register and login to add Your own recipes</h6>
-  <nav>
-    <ul>
-      <li>
-        <a routerLink='/' (click)="redirectHome()">Home</a>
-      </li>
-      <li>
-        <a routerLink='/about'>About</a>
-      </li>
-      <li *ngIf='auth.isAuthorized()'>
-        <a routerLink='/add'>Add Recipe</a>
-      </li>
-      <li *ngIf='!auth.isAuthorized()'>
-        <a routerLink='/register'>Register</a>
-      </li>
-      <li *ngIf='!auth.isAuthorized()'>
-        <a routerLink='/login'>Login</a>
-      </li>
-      <li *ngIf='auth.isAuthorized()'>
-        <a (click)='onLogout()' routerLink='/'>Logout</a>
-      </li>
-    </ul>
-  </nav>
-  <div class="input-group input-group-sm">
-    <input type="text" class="form-control" placeholder="Search for...">
-    <span class="input-group-btn">
-      <button class="btn btn-default" type="button">Go!</button>
-    </span>
-  </div>
-  <div (click)='showMenu()' class="menu_icon">
-    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 0 48 48" width="48">
-      <path d="M0 0h48v48h-48z" fill="none" />
-      <path d="M6 36h36v-4h-36v4zm0-10h36v-4h-36v4zm0-14v4h36v-4h-36z" />
-    </svg>
-  </div>
+    <h3>Tasty Recipes From Around The World</h3>
+    <h6>Register and login to add Your own recipes</h6>
+    <nav>
+        <ul>
+            <li>
+                <a routerLink='/' (click)="redirectHome()">Home</a>
+            </li>
+            <li>
+                <a routerLink='/about'>About</a>
+            </li>
+            <li *ngIf='auth.isAuthorized()'>
+                <a routerLink='/add'>Add Recipe</a>
+            </li>
+            <li *ngIf='!auth.isAuthorized()'>
+                <a routerLink='/register'>Register</a>
+            </li>
+            <li *ngIf='!auth.isAuthorized()'>
+                <a routerLink='/login'>Login</a>
+            </li>
+            <li *ngIf='auth.isAuthorized()'>
+                <a (click)='onLogout()' routerLink='/'>Logout</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="input-group input-group-sm">
+        <input type="text" class="form-control" placeholder="Search for...">
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="button">Go!</button>
+        </span>
+    </div>
+    <div (click)='showMenu()' class="menu_icon">
+        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 0 48 48" width="48">
+            <path d="M0 0h48v48h-48z" fill="none" />
+            <path d="M6 36h36v-4h-36v4zm0-10h36v-4h-36v4zm0-14v4h36v-4h-36z" />
+        </svg>
+    </div>
 </div>

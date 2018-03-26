@@ -30,6 +30,7 @@ import { PaginationService } from './services/pagination.service';
 import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './services/auth-interceptor.service';
 import { EditRecipeComponent } from './page/edit/edit-recipe.component';
+import { RecipeCardComponent } from './page/recipe-card/recipe-card.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { EditRecipeComponent } from './page/edit/edit-recipe.component';
     LoginComponent,
     FullRecipeComponent,
     AddRecipeComponent,
-    EditRecipeComponent
+    EditRecipeComponent,
+    RecipeCardComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +61,7 @@ import { EditRecipeComponent } from './page/edit/edit-recipe.component';
   ],
   providers: [RecipeService, PassingIdService, AuthService, HeaderComponent,
     RecipesListComponent, PassingFilterService, HeaderComponent, AppComponent,
-    PaginationService, PassingRecipeService,
+    PaginationService, PassingRecipeService, RecipeCardComponent,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

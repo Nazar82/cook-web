@@ -14,6 +14,7 @@
   
   .filter:hover {
       color: #A8BEEB;
+      cursor: pointer;
   }
   
   ul {
